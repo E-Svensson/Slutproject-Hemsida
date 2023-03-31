@@ -1,0 +1,70 @@
+:root{ /*Använder för att deklarera globala variabler*/
+    --side_size: 10em;
+}
+
+#home{
+    display: grid;
+    grid-template-columns: var(--side_size) auto var(--side_size);
+    grid-template-rows: auto;
+    grid-template-areas: 
+    ". div .";
+
+    background-color: rgb(19, 16, 19);
+}
+
+.wrapper{
+    grid-area: div;
+
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: auto auto auto auto;
+    grid-template-areas:
+    "header"
+    "nav"
+    "main"
+    "footer";
+}
+
+.wrapper > header{
+    grid-area: header;
+}
+
+.wrapper > nav{
+    grid-area: nav;
+
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    grid-template-rows: auto;
+    grid-template-areas:
+    "card_1 card_2 card_3 card_4";
+}
+.wrapper > main{
+    grid-area: main;
+}
+
+.wrapper > footer{
+    grid-area: footer;
+}
+
+nav > .card_1{
+    grid-area: card_1;
+
+    width: 10vw;
+    height: 10vw;
+
+    background-color: rgba(255, 223, 252, 0.2);
+    border-radius: 1vw;
+    
+}
+
+@media screen and (max-width: 800px){
+    #home{
+        display: grid;
+        grid-template-columns: var(--body_zise, auto);
+        grid-template-rows: auto;
+        grid-template-areas: 
+        "div";
+    
+        background-color: rgb(19, 16, 19);
+    }
+}
