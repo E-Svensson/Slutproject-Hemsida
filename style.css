@@ -38,16 +38,8 @@
 
 .wrapper > nav{
     grid-area: nav;
-
-    display: grid;
-    grid-template-columns: 25% 25% 25% 25%;
-    grid-template-rows: 10vw;
-    grid-template-areas:
-    "card_1 card_2 card_3 card_4";
-
-    justify-items: center;
-    align-items: center;
 }
+
 .wrapper > main{
     grid-area: main;
 }
@@ -56,14 +48,39 @@
     grid-area: footer;
 }
 
-nav > .card_1, .card_2, .card_3, .card_4{
+
+ul{
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    grid-template-rows: 10vw;
+    grid-template-areas:
+    "card_1 card_2 card_3 card_4";
+
+    justify-items: center;
+    align-items: center;
+
+    margin: 0;
+    padding: 0;
+}
+
+ul > li{
+    display: flex;
+
     width: 95%;
     height: 95%;
 
     background-color: rgba(255, 223, 252, 0.2);
     border-radius: 1vw;
+/*
+    font-size: 3vw;
+*/
+    list-style-type: none;
 
-    transition: width var(--transition_time), height var(--transition_time), background-color var(--transition_time);
+    transition: 
+    width var(--transition_time), 
+    height var(--transition_time), 
+    background-color var(--transition_time),
+    font-size var(--transition_time);
 }
 
 .card_1{
@@ -88,6 +105,18 @@ nav > .card_1, .card_2, .card_3, .card_4{
     height: 100%;
 }
 
+h2:hover{
+    font-size: 105%;
+}
+/*
+li > h2{
+    font-size: 100%;
+    margin: auto;
+
+    text-align: center;
+    vertical-align: middle;
+}
+*/
 @media screen and (max-width: 800px){
     #home{
         display: grid;
