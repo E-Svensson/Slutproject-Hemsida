@@ -22,6 +22,8 @@
     font-style: normal;
 }
 
+/* ========== Body ========== */
+
 body{
     display: grid;
     grid-template-columns: var(--side_size) auto var(--side_size);
@@ -37,6 +39,8 @@ body{
         linear-gradient(to right, var(--dark_bg_color), rgba(0, 0, 0, 0) var(--side_size)),
         linear-gradient(to left, var(--dark_bg_color), rgba(0, 0, 0, 0) var(--side_size));
 }
+
+/* ========== Wrapper ========== */
 
 .wrapper{
     grid-area: div;
@@ -67,7 +71,7 @@ body{
     height: calc(var(--row_height) / 2);
 }
 
-.wrapper > main{
+#home .wrapper > main{
     grid-area: main;
     display: flex;
 
@@ -78,10 +82,12 @@ body{
 }
 
 #sida1 .wrapper > main{
+    grid-area: main;
+
     display: grid;
     grid-template-columns: calc(var(--row_height) / 2) auto;
     grid-template-rows: auto;
-    grid-template-areas: "aside section";
+    grid-template-areas: "nav_2 section";
 
     min-height: var(--row_height);
 }
@@ -95,6 +101,8 @@ body{
 
     height: calc(var(--row_height) / 3);
 }
+
+/* ========== Header ========== */
 
 header > div{
     display: flex;
@@ -120,7 +128,9 @@ header h1{
     margin: 0;
 }
 
-nav > ul{
+/* ========== Nav ========== */
+
+.wrapper > nav ul{
     display: grid;
     grid-template-columns: calc(var(--row_height) / 2) auto auto auto auto;
     grid-template-rows: auto;
@@ -129,6 +139,8 @@ nav > ul{
 
     height: 100%;
 
+    list-style-type: none;
+
     justify-items: center;
     align-items: center;
 
@@ -136,7 +148,7 @@ nav > ul{
     padding: 0;
 }
 
-nav > ul > li{
+.wrapper > nav li{
     width: calc(100% - var(--border_radius));
     height: calc(100% - var(--border_radius));
 
@@ -144,7 +156,6 @@ nav > ul > li{
         radial-gradient(var(--card_colour_20), var(--card_colour_0));
     border-radius: var(--border_radius);
 
-    list-style-type: none;
     color:black;
 
     transition: 
@@ -153,7 +164,7 @@ nav > ul > li{
         background-color var(--transition_time) ease;
 }
 
-nav > ul > li > a{
+.wrapper > nav a{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -168,7 +179,7 @@ nav > ul > li > a{
     border-radius: var(--border_radius);
 }
 
-nav > ul > li > a > h2, i{
+.wrapper > nav h2, i{
     font-size: inherit;
     color: inherit;
     margin: 0;
@@ -200,19 +211,19 @@ nav > ul > li > a > h2, i{
     grid-area: card_4;
 }
 
-.card_home:hover, .card_1:hover, .card_2:hover, .card_3:hover, .card_4:hover{
+.wrapper .card_home:hover, .wrapper .card_1:hover, .wrapper .card_2:hover, .wrapper .card_3:hover, .wrapper .card_4:hover{
     background-color: var(--card_colour_50);
     width: 100%;
     height: 100%;
 }
 
-.card_home:hover i, .card_1:hover h2, .card_2:hover h2, .card_3:hover h2, .card_4:hover h2{
+.wrapper .card_home:hover i, .wrapper .card_1:hover h2, .wrapper .card_2:hover h2, .wrapper .card_3:hover h2, .wrapper .card_4:hover h2{
     color: var(--font_color);
     font-size: calc(var(--font_size) / 1.5);
     text-shadow: calc(var(--font_size) / 10) calc(var(--font_size) / 10) calc(var(--font_size) / 7.5) black;
 }
 
-.you_are_here{
+.wrapper .you_are_here{
     background-image:
         radial-gradient(var(--card_colour_50), var(--card_colour_20));
     width: calc(100% - var(--border_radius) / 2);
@@ -220,12 +231,82 @@ nav > ul > li > a > h2, i{
     color: var(--font_color);
 }
 
-main > div{
-    display: flex;
+/* ========== Main ========== */
 
+#sida1 section{
+    grid-area: section;
+    display: flex;
     justify-content: center;
     align-items: center;
+}
 
+#sida1 main > nav{
+    grid-area: nav_2;
+}
+
+#sida1 main > nav ul{
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: calc(var(--row_height) / 2) calc(var(--row_height) / 2) calc(var(--row_height) / 2);
+    grid-template-areas:
+    "aside_1"
+    "aside_2"
+    "aside_3";
+
+    margin: 0;
+    padding: 0;
+
+    height: 100%;
+
+    list-style-type: none;
+
+    justify-items: center;
+    align-items: center;
+}
+
+#sida1 main > nav li{
+    width: calc(100% - var(--border_radius));
+    height: calc(100% - var(--border_radius));
+
+    background-image:
+        radial-gradient(var(--card_colour_20), var(--card_colour_0));
+    border-radius: var(--border_radius);
+
+    color: black;
+
+    transition: 
+        width var(--transition_time) ease, 
+        height var(--transition_time) ease,
+        background-color var(--transition_time) ease;
+}
+
+.aside_1{
+    grid-area: aside_1;
+}
+
+.aside_2{
+    grid-area: aside_2;
+}
+
+.aside_3{
+    grid-area: aside_3;
+}
+
+#sida1 .aside_1:hover, #sida1 .aside_2:hover, #sida1 .aside_3:hover{
+    background-color: var(--card_colour_50);
+    width: 100%;
+    height: 100%;
+}
+
+#sida1 .you_are_here_2{
+    background-image:
+        radial-gradient(var(--card_colour_50), var(--card_colour_20));
+    width: calc(100% - var(--border_radius) / 2);
+    height: calc(100% - var(--border_radius) / 2);
+    color: var(--font_color);
+}
+
+main div{
     border-radius: var(--border_radius);
 
     width: calc(100% - var(--border_radius));
@@ -234,6 +315,8 @@ main > div{
     background-image:
         radial-gradient(var(--card_colour_50), var(--card_colour_20))
 }
+
+/* ========== Footer ========== */
 
 footer > div{
     display: flex;
@@ -257,8 +340,10 @@ footer h4{
     font-family: deliregular;
 }
 
+/* ========== Mobile ========== */
+
 @media screen and (max-width: 800px){
-    #home{
+    body{
         display: grid;
         grid-template-columns: var(--body_zise, auto);
         grid-template-rows: auto;
