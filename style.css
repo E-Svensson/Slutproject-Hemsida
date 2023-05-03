@@ -22,7 +22,7 @@
     font-style: normal;
 }
 
-#home{
+body{
     display: grid;
     grid-template-columns: var(--side_size) auto var(--side_size);
     grid-template-rows: auto;
@@ -77,6 +77,15 @@
     min-height: var(--row_height);
 }
 
+#sida1 .wrapper > main{
+    display: grid;
+    grid-template-columns: calc(var(--row_height) / 2) auto;
+    grid-template-rows: auto;
+    grid-template-areas: "aside section";
+
+    min-height: var(--row_height);
+}
+
 .wrapper > footer{
     grid-area: footer;
     display: flex;
@@ -84,7 +93,7 @@
     justify-content: center;
     align-items: center;
 
-    height: calc(var(--row_height) / 2);
+    height: calc(var(--row_height) / 3);
 }
 
 header > div{
@@ -102,8 +111,9 @@ header > div{
         radial-gradient(var(--card_colour_50), var(--card_colour_20))
 }
 
-header > div > h1{
+header h1{
     font-size: var(--font_size);
+    text-shadow: 0 0 calc(var(--font_size) / 5) black;
     font-family: deliregular;
     color: var(--font_color);
 
@@ -131,39 +141,41 @@ nav > ul > li{
     height: calc(100% - var(--border_radius));
 
     background-image:
-        linear-gradient(var(--card_colour_20), var(--background_color));
+        radial-gradient(var(--card_colour_20), var(--card_colour_0));
     border-radius: var(--border_radius);
 
     list-style-type: none;
+    color:black;
 
     transition: 
         width var(--transition_time) ease, 
-        height var(--transition_time) ease, 
+        height var(--transition_time) ease,
         background-color var(--transition_time) ease;
 }
 
-li > a{
+nav > ul > li > a{
     display: flex;
     justify-content: center;
     align-items: center;
 
+    text-decoration: none;
+    color: inherit;
+    font-size: calc(var(--font_size) / 2);
+    font-family: deliregular;
+
     width: 100%;
     height: 100%;
     border-radius: var(--border_radius);
-
-    font-family: deliregular;
-
-    text-decoration: none;
-
-    font-size: calc(var(--font_size) / 2);
 }
 
-a > h2, i{
+nav > ul > li > a > h2, i{
     font-size: inherit;
-    color: black;
+    color: inherit;
     margin: 0;
+    text-shadow: 0 0 calc(var(--font_size) / 10) black;
 
     transition: 
+        text-shadow var(--transition_time) ease,
         font-size var(--transition_time) ease,
         color var(--transition_time) ease;
 }
@@ -189,8 +201,7 @@ a > h2, i{
 }
 
 .card_home:hover, .card_1:hover, .card_2:hover, .card_3:hover, .card_4:hover{
-    background-image:
-        radial-gradient(var(--card_colour_50), var(--card_colour_50));
+    background-color: var(--card_colour_50);
     width: 100%;
     height: 100%;
 }
@@ -198,6 +209,7 @@ a > h2, i{
 .card_home:hover i, .card_1:hover h2, .card_2:hover h2, .card_3:hover h2, .card_4:hover h2{
     color: var(--font_color);
     font-size: calc(var(--font_size) / 1.5);
+    text-shadow: calc(var(--font_size) / 10) calc(var(--font_size) / 10) calc(var(--font_size) / 7.5) black;
 }
 
 .you_are_here{
@@ -236,6 +248,13 @@ footer > div{
 
     background-image:
         radial-gradient(var(--card_colour_50), var(--card_colour_20))
+}
+
+footer h4{
+    color: var(--font_color);
+    text-shadow: 0 0 calc(var(--font_size) / 20) black;
+    font-size: calc(var(--font_size) / 4);
+    font-family: deliregular;
 }
 
 @media screen and (max-width: 800px){
