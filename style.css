@@ -171,7 +171,8 @@ header h1{
 
     text-decoration: none;
     color: inherit;
-    font-size: calc(var(--font_size) / 2);
+    font-size: calc(var(--font_size) / 2.5);
+    text-shadow: 0 0 calc(var(--font_size) / 12.5) black;
     font-family: deliregular;
 
     width: 100%;
@@ -179,8 +180,20 @@ header h1{
     border-radius: var(--border_radius);
 }
 
-.wrapper > nav h2, i{
+.wrapper > nav h2{
     font-size: inherit;
+    color: inherit;
+    margin: 0;
+    text-shadow: inherit;
+
+    transition: 
+        text-shadow var(--transition_time) ease,
+        font-size var(--transition_time) ease,
+        color var(--transition_time) ease;
+}
+
+.wrapper > nav i{
+    font-size: calc(var(--font_size) / 2);
     color: inherit;
     margin: 0;
     text-shadow: 0 0 calc(var(--font_size) / 10) black;
@@ -217,10 +230,16 @@ header h1{
     height: 100%;
 }
 
-.wrapper .card_home:hover i, .wrapper .card_1:hover h2, .wrapper .card_2:hover h2, .wrapper .card_3:hover h2, .wrapper .card_4:hover h2{
+.wrapper .card_1:hover h2, .wrapper .card_2:hover h2, .wrapper .card_3:hover h2, .wrapper .card_4:hover h2{
+    color: var(--font_color);
+    font-size: calc(var(--font_size) / 2);
+    text-shadow: calc(var(--font_size) / 10) calc(var(--font_size) / 10) calc(var(--font_size) / 10) black;
+}
+
+.wrapper .card_home:hover i{
     color: var(--font_color);
     font-size: calc(var(--font_size) / 1.5);
-    text-shadow: calc(var(--font_size) / 10) calc(var(--font_size) / 10) calc(var(--font_size) / 7.5) black;
+    text-shadow: calc(var(--font_size) / 7.5) calc(var(--font_size) / 7.5) calc(var(--font_size) / 7.5) black;
 }
 
 .wrapper .you_are_here{
