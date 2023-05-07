@@ -371,21 +371,99 @@ header h1{
 
 /* ========== Main Section ========== */
 
-#quiz main section > div{
+form input[type=text], input[type=radio]{
+    font-size: inherit;
+    font-family: inherit;
+    color: black;
+
+    text-align: start;
+    border: 0;
+}
+
+form input[type=text]{
+    box-shadow: 0 0 calc(var(--font_size) / 20) black;
+    border-radius: var(--border_radius);
+}
+
+form input[type=radio]{
+    margin: calc(var(--border_radius) / 2);
+}
+
+form{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+form > div{
     border-radius: var(--border_radius);
 
     width: calc(100% - var(--border_radius));
     height: calc(100% - var(--border_radius));
-    margin-top: calc(var(--border_radius) / 2);
-    margin-bottom: calc(var(--border_radius) / 2);
 
-    background-image:
-        radial-gradient(var(--card_colour_50), var(--card_colour_20))
+    background-color: var(--card_colour_20);
+    margin: calc(var(--border_radius) / 2);
 }
+
+form h3{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+
+    font-size: calc(var(--font_size) / 3);
+    text-shadow: 0 0 calc(var(--font_size) / 15) black;
+    font-family: nexa, arial;
+    color: var(--font_color);
+
+    margin: var(--border_radius);
+}
+
+form audio{
+    height: calc(var(--font_size) / 2);
+    box-shadow: 0 0 calc(var(--font_size) / 20) black;
+    border-radius: 100em;
+
+    margin: calc(var(--border_radius) / 2);
+
+    text-shadow: none;
+}
+
+form > div > div{
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+
+    margin: calc(var(--border_radius) / 2);
+}
+
+form p{
+    display: flex;
+    align-items: center;
+
+    background-color: var(--card_colour_20);
+    border-radius: var(--border_radius);
+
+    padding: 0;
+    margin: calc(var(--border_radius) / 2);
+}
+
+form p:has(input[type=radio]:checked){
+    background-color: var(--card_colour_50);
+}
+
+form p:hover{
+    background-color: var(--card_colour_50);
+}
+
+form label{
+    padding: calc(var(--border_radius) / 2);
+}
+
 
 /* ========== Main ========== */
 
-#home main > div{
+main > div, section > div{
     border-radius: var(--border_radius);
 
     width: calc(100% - var(--border_radius));
@@ -397,7 +475,7 @@ header h1{
         radial-gradient(var(--card_colour_50), var(--card_colour_20))
 }
 
-#home main h2{
+main h2{
     font-size: calc(var(--font_size) / 3);
     text-shadow: 0 0 calc(var(--font_size) / 15) black;
     font-family: nexa, arial;
@@ -408,7 +486,11 @@ header h1{
     padding: calc(var(--border_radius) / 2);
 }
 
-#home main p{
+main h2:not(nav h2){
+    text-decoration: underline;
+}
+
+main p{
     font-size: calc(var(--font_size) / 4);
     text-shadow: 0 0 calc(var(--font_size) / 20) black;
     font-family: nexa, arial;
@@ -691,3 +773,9 @@ footer h4{
         font-size: calc(var(--font_size));
     }
 }
+
+
+
+
+
+
