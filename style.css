@@ -10,6 +10,7 @@
     --font_size: 5vw;
 
     --card_colour_0: rgba(255, 223, 252, 0);
+    --card_colour_10: rgba(255, 223, 252, 0.1);
     --card_colour_20: rgba(255, 223, 252, 0.2);
     --card_colour_50: rgba(255, 223, 252, 0.5);
 }
@@ -491,15 +492,48 @@ main h2:not(nav h2){
     text-decoration: underline;
 }
 
-main p{
+main p, ul, table{
     font-size: calc(var(--font_size) / 4);
     text-shadow: 0 0 calc(var(--font_size) / 20) black;
     font-family: nexa, arial;
     color: var(--font_color);
 
-    text-align: start;
+    text-align: center;
+    list-style-position: inside;
+    list-style-type: disc;
 
     padding: calc(var(--border_radius) / 2);
+}
+
+/* ========== Main Table ========== */
+
+table{
+    width: 100%;
+}
+
+thead, tfoot{
+    font-size: calc(var(--font_size) / 3);
+    background-color: var(--card_colour_50);
+}
+
+td{
+    padding: calc(var(--border_radius) / 2);
+}
+
+tbody td{
+    padding: calc(var(--border_radius) / 2);
+}
+
+tbody ul{
+    margin: 0;
+}
+
+tbody tr:nth-child(2n-1){
+    background-color: var(--card_colour_20);
+}
+
+tbody tr:nth-child(2n){
+    background-color: var(--card_colour_10);
 }
 
 /* ========== Main Images ========== */
