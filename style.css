@@ -370,9 +370,9 @@ header h1{
     color: var(--font_color);
 }
 
-/* ========== Main Section ========== */
+/* ========== Main Section Form ========== */
 
-form input[type=text], input[type=radio]{
+form input[type=text], input[type=radio], textarea, button[type=submit]{
     font-size: inherit;
     font-family: inherit;
     color: black;
@@ -381,9 +381,11 @@ form input[type=text], input[type=radio]{
     border: 0;
 }
 
-form input[type=text]{
+form input[type=text], textarea, button[type=submit]{
     box-shadow: 0 0 calc(var(--font_size) / 20) black;
     border-radius: var(--border_radius);
+
+    padding: var(--border_radius);
 }
 
 form input[type=radio]{
@@ -397,7 +399,7 @@ form{
     align-items: center;
 }
 
-form > div{
+form fieldset{
     border-radius: var(--border_radius);
 
     width: calc(100% - var(--border_radius));
@@ -405,6 +407,11 @@ form > div{
 
     background-color: var(--card_colour_20);
     margin: calc(var(--border_radius) / 2);
+    padding: 0;
+}
+
+form legend{
+    text-align: center;
 }
 
 form h3{
@@ -431,7 +438,7 @@ form audio{
     text-shadow: none;
 }
 
-form > div > div{
+form div{
     display: flex;
     text-align: center;
     flex-direction: column;
@@ -446,7 +453,6 @@ form p{
     background-color: var(--card_colour_20);
     border-radius: var(--border_radius);
 
-    padding: 0;
     margin: calc(var(--border_radius) / 2);
 }
 
@@ -505,18 +511,37 @@ main p, ul, table{
     padding: calc(var(--border_radius) / 2);
 }
 
+/* ========== Main Form ========== */
+
+#home form{
+    float: right;
+}
+
+#home form p{
+    background-color: transparent;
+}
+
+#home form p:nth-child(1){
+    justify-content: center;
+}
+
+#home form p:not(p:nth-child(1)){
+    flex-direction: column;
+}
+
 /* ========== Main Table ========== */
 
 table{
-    width: 100%;
+    border-spacing: 2px;
 }
 
 thead, tfoot{
     font-size: calc(var(--font_size) / 3);
     background-color: var(--card_colour_50);
+    border-top-left-radius: 100em;
 }
 
-td{
+td, th{
     padding: calc(var(--border_radius) / 2);
 }
 
@@ -538,7 +563,7 @@ tbody tr:nth-child(2n){
 
 /* ========== Main Images ========== */
 
-#home main div div{
+#home main figure{
     display: grid;
     grid-template-columns: 100%;
     grid-template-rows: auto auto;
@@ -554,22 +579,22 @@ tbody tr:nth-child(2n){
     background-color: var(--card_colour_20);
 }
 
-#home main div > div:nth-of-type(1){
+#home main figure:nth-of-type(1){
     float: left;
 }
 
-#home main div > div:nth-of-type(2){
+#home main figure:nth-of-type(2){
     float: right;
 }
 
-#home main div div img{
+#home main figure img{
     grid-area: img;
     max-width: calc(var(--font_size) * 2);
     border-radius: var(--border_radius);
     margin: auto;
 }
 
-#home main div div p{
+#home main figure figcaption{
     grid-area: p;
     max-width: calc(var(--font_size) * 2);
     border-radius: var(--border_radius);
@@ -578,6 +603,8 @@ tbody tr:nth-child(2n){
     margin: 0;
     padding-top: inherit;
 
+    font-family: nexa;
+    color: var(--font_color);
     font-size: calc(var(--font_size) / 6);
     text-shadow: 0 0 calc(var(--font_size) / 30) black;
     text-align: center;
