@@ -64,45 +64,52 @@
                 <section>
                     <div>
                         <h2>Musik-quiz nivå 1</h2>
-                        <form method="get" action="quiz_1_answers.html">
-                            <script> // Sparar form-datan i localStorage
-                                function getData(){
-                                    var quizQuestion1 = document.getElementsByName('question_1');
+                        <form method="get" action="idk.php">
+                            <script>
+                                var answerQuestion1 = localStorage.getItem("answerQuestion1");
 
-                                    for (var i = 1; i <= quizQuestion1.length; i++){
-                                        if (quizQuestion1[i].checked){
-                                            localStorage.setItem("answerQuestion1", quizQuestion1[i].value);
-                                            break;
-                                        }
+                                var quizQuestion1 = document.getElementsByName('question_1');
+
+                                var element = document.getElementById("test");
+                                element.classList.remove("your_choice");
+
+                                for (var i = 0; i < quizQuestion1.length; i++){
+                                    if (quizQuestion1[i].value === answerQuestion1){
+                                        
+                                        break;
                                     }
                                 }
                             </script>
-                            <fieldset>
+                            <fieldset class="correct">
                                 <legend>
                                     <h3>Fråga 1</h3>
                                 </legend>
                                 <h3>
                                     1. Vad heter låten?
+
+                                    <script>
+                                        document.write(answerQuestion1);
+                                    </script>
                                     <audio controls>
                                         <source src="Audio/1.1.mp3" type="audio/mp3">
                                         Din webbläsare är stenåldrig
                                     </audio>
                                 </h3>
                                 <div>
-                                    <p>
-                                        <input type="radio" name="question_1" id="question_1_alt_1" value="Bad Romance">
+                                    <p class="your_choice" id="test">
+                                        <input type="radio" name="question_1" id="question_1_alt_1" value="Bad Romance" disabled>
                                         <label for="question_1_alt_1">"Bad Romance"</label>
                                     </p>
-                                    <p>
-                                        <input type="radio" name="question_1" id="question_1_alt_2" value="Lover's Revenge">
+                                    <p class="">
+                                        <input type="radio" name="question_1" id="question_1_alt_2" value="Lover's Revenge" disabled>
                                         <label for="question_1_alt_2">"Lover's Revenge"</label>
                                     </p>
-                                    <p>
-                                        <input type="radio" name="question_1" id="question_1_alt_3" value="I want your love">
+                                    <p class="">
+                                        <input type="radio" name="question_1" id="question_1_alt_3" value="I want your love" disabled>
                                         <label for="question_1_alt_3">"I want your love"</label>
                                     </p>
-                                    <p>
-                                        <input type="radio" name="question_1" id="question_1_alt_4" value="Gaga, ooh-lala">
+                                    <p class="">
+                                        <input type="radio" name="question_1" id="question_1_alt_4" value="Gaga, ooh-lala" disabled>
                                         <label for="question_1_alt_4">"Gaga, ooh-lala"</label>
                                     </p>
                                 </div>
@@ -194,16 +201,6 @@
                                     <p>
                                         <input type="radio" name="1.4" id="1.4_4">
                                         <label for="1.4_4">"Epic Sax Guy"</label>
-                                    </p>
-                                </div>
-                            </fieldset>
-                            <fieldset>
-                                <legend>
-                                    <h3>Färdig?</h3>
-                                </legend>
-                                <div>
-                                    <p>
-                                        <input type="submit" onclick="getData()">
                                     </p>
                                 </div>
                             </fieldset>

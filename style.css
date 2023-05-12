@@ -460,7 +460,7 @@ form p:has(input[type=radio]:checked){
     background-color: var(--card_colour_50);
 }
 
-form p:hover{
+form p:has(input:not(input[disabled])):hover{
     background-color: var(--card_colour_50);
 }
 
@@ -468,6 +468,19 @@ form label{
     padding: calc(var(--border_radius) / 2);
 }
 
+.correct{
+    background-color: forestgreen;
+}
+
+.wrong{
+    background-color: red;
+}
+
+.your_choice{
+    border-color: var(--font_color);
+    border-width: 2px;
+    border-style: solid;
+}
 
 /* ========== Main ========== */
 
