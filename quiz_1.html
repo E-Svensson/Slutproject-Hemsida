@@ -6,6 +6,7 @@
         <link href="style.css" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <title>Musik-quiz Nivå 1</title>
+        <script src="svar.js"></script>
     </head>
     <body id="quiz">
         <div class="wrapper">
@@ -64,19 +65,7 @@
                 <section>
                     <div>
                         <h2>Musik-quiz nivå 1</h2>
-                        <form method="get" action="quiz_1_answers.html">
-                            <script> // Sparar form-datan i localStorage
-                                function getData(){
-                                    var quizQuestion1 = document.getElementsByName('question_1');
-
-                                    for (var i = 1; i <= quizQuestion1.length; i++){
-                                        if (quizQuestion1[i].checked){
-                                            localStorage.setItem("answerQuestion1", quizQuestion1[i].value);
-                                            break;
-                                        }
-                                    }
-                                }
-                            </script>
+                        <form method="get" action="">
                             <fieldset>
                                 <legend>
                                     <h3>Fråga 1</h3>
@@ -90,19 +79,19 @@
                                 </h3>
                                 <div>
                                     <p>
-                                        <input type="radio" name="question_1" id="question_1_alt_1" value="Bad Romance">
+                                        <input type="radio" name="question_1" id="question_1_alt_1" value="Bad_Romance">
                                         <label for="question_1_alt_1">"Bad Romance"</label>
                                     </p>
                                     <p>
-                                        <input type="radio" name="question_1" id="question_1_alt_2" value="Lover's Revenge">
+                                        <input type="radio" name="question_1" id="question_1_alt_2" value="Lover's_Revenge">
                                         <label for="question_1_alt_2">"Lover's Revenge"</label>
                                     </p>
                                     <p>
-                                        <input type="radio" name="question_1" id="question_1_alt_3" value="I want your love">
+                                        <input type="radio" name="question_1" id="question_1_alt_3" value="I_want_your_love">
                                         <label for="question_1_alt_3">"I want your love"</label>
                                     </p>
                                     <p>
-                                        <input type="radio" name="question_1" id="question_1_alt_4" value="Gaga, ooh-lala">
+                                        <input type="radio" name="question_1" id="question_1_alt_4" value="Gaga,_ooh-lala">
                                         <label for="question_1_alt_4">"Gaga, ooh-lala"</label>
                                     </p>
                                 </div>
@@ -203,7 +192,7 @@
                                 </legend>
                                 <div>
                                     <p>
-                                        <input type="submit" onclick="getData()">
+                                        <input type="button" value="svar" onclick="getData()">
                                     </p>
                                 </div>
                             </fieldset>
