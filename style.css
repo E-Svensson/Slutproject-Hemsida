@@ -86,13 +86,15 @@ body{
     min-height: var(--row_height);
 }
 
-#quiz .wrapper > main{
+#historia .wrapper > main{
     grid-area: main;
 
     display: grid;
-    grid-template-columns: calc(var(--row_height) / 2) auto;
-    grid-template-rows: auto;
-    grid-template-areas: "nav_2 section";
+    grid-template-columns: 100%;
+    grid-template-rows: calc(var(--row_height) / 3) auto;
+    grid-template-areas: 
+    "nav_2"
+    "section";
 
     min-height: var(--row_height);
 }
@@ -235,26 +237,23 @@ header h1{
 
 /* ========== Main Nav ========== */
 
-#quiz section{
+#historia section{
     grid-area: section;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-#quiz main > nav{
+#historia main > nav{
     grid-area: nav_2;
 }
 
-#quiz main > nav ul{
+#historia main > nav ul{
     display: grid;
-    grid-template-columns: 100%;
-    grid-template-rows: calc(var(--row_height) / 4) calc(var(--row_height) / 2) calc(var(--row_height) / 2) calc(var(--row_height) / 2);
+    grid-template-columns: auto auto auto;
+    grid-template-rows: auto;
     grid-template-areas:
-    "aside_info"
-    "aside_1"
-    "aside_2"
-    "aside_3";
+    "aside_1 aside_2 aside_3";
 
     margin: 0;
     padding: 0;
@@ -267,7 +266,7 @@ header h1{
     align-items: center;
 }
 
-#quiz main > nav li{
+#historia main > nav li{
     width: calc(100% - var(--border_radius));
     height: calc(100% - var(--border_radius));
 
@@ -283,15 +282,15 @@ header h1{
         background-color var(--transition_time) ease;
 }
 
-#quiz main > nav a{
+#historia main > nav a{
     display: flex;
     justify-content: center;
     align-items: center;
 
     text-decoration: none;
     color: inherit;
-    font-size: calc(var(--font_size) / 2.5);
-    text-shadow: 0 0 calc(var(--font_size) / 12.5) black;
+    font-size: calc(var(--font_size) / 3);
+    text-shadow: 0 0 calc(var(--font_size) / 15) black;
     font-family: nexa, arial;
 
     width: 100%;
@@ -304,7 +303,7 @@ header h1{
         color var(--transition_time) ease;
 }
 
-#quiz main > nav h2:not(#quiz main li:nth-child(1) h2){
+#historia main > nav h2{
 
     color: inherit;
     font-size: inherit;
@@ -312,34 +311,6 @@ header h1{
 
     margin: 0;
     border-radius: var(--border_radius);
-}
-
-#quiz main li:nth-child(1){
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    font-size: calc(var(--font_size) / 5);
-    text-shadow: 0 0 calc(var(--font_size) / 25) black;
-    font-family: nexa, arial;
-}
-
-#quiz main li:nth-child(1) h2{
-    font-size: inherit;
-    color: inherit;
-    margin: 0;
-    text-shadow: inherit;
-}
-
-
-#quiz .aside_info{
-    grid-area: aside_info;
-
-    background-image:
-        radial-gradient(var(--card_colour_50), var(--card_colour_20));
-    width: calc(100% - var(--border_radius) / 2);
-    height: calc(100% - var(--border_radius) / 2);
-    color: var(--font_color);
 }
 
 .aside_1{
@@ -354,19 +325,19 @@ header h1{
     grid-area: aside_3;
 }
 
-#quiz .aside_1:hover, #quiz .aside_2:hover, #quiz .aside_3:hover{
+#historia .aside_1:hover, #historia .aside_2:hover, #historia .aside_3:hover{
     background-color: var(--card_colour_50);
     width: 100%;
     height: 100%;
 }
 
-#quiz .aside_1:hover a, #quiz .aside_2:hover a, #quiz .aside_3:hover a{
+#historia .aside_1:hover a, #historia .aside_2:hover a, #historia .aside_3:hover a{
     color: var(--font_color);
-    font-size: calc(var(--font_size) / 2);
-    text-shadow: calc(var(--font_size) / 10) calc(var(--font_size) / 10) calc(var(--font_size) / 10) black;
+    font-size: calc(var(--font_size) / 2.625);
+    text-shadow: calc(var(--font_size) / 13.125) calc(var(--font_size) / 13.125) calc(var(--font_size) / 13.125) black;
 }
 
-#quiz .you_are_here_2{
+#historia .you_are_here_2{
     background-image:
         radial-gradient(var(--card_colour_50), var(--card_colour_20));
     width: calc(100% - var(--border_radius) / 2);
@@ -374,7 +345,7 @@ header h1{
     color: var(--font_color);
 }
 
-/* ========== Main Section Form ========== */
+/* ========== Main Form ========== */
 
 form input[type=text], input[type=radio], textarea, button[type=submit]{
     font-size: inherit;
@@ -524,19 +495,19 @@ main p, ul, table{
 
 /* ========== Main Form ========== */
 
-#home form{
+#historia form{
     float: right;
 }
 
-#home form p{
+#historia form p{
     background-color: transparent;
 }
 
-#home form p:nth-child(1){
+#historia form p:nth-child(1){
     justify-content: center;
 }
 
-#home form p:not(p:nth-child(1)){
+#historia form p:not(p:nth-child(1)){
     flex-direction: column;
 }
 
@@ -574,7 +545,7 @@ tbody tr:nth-child(2n){
 
 /* ========== Main Images ========== */
 
-#home main figure{
+#historia main figure{
     display: grid;
     grid-template-columns: 100%;
     grid-template-rows: auto auto;
@@ -590,22 +561,22 @@ tbody tr:nth-child(2n){
     background-color: var(--card_colour_20);
 }
 
-#home main figure:nth-of-type(1){
+#historia main figure:nth-of-type(1){
     float: left;
 }
 
-#home main figure:nth-of-type(2){
+#historia main figure:nth-of-type(2){
     float: right;
 }
 
-#home main figure img{
+#historia main figure img{
     grid-area: img;
     max-width: calc(var(--font_size) * 2);
     border-radius: var(--border_radius);
     margin: auto;
 }
 
-#home main figure figcaption{
+#historia main figure figcaption{
     grid-area: p;
     max-width: calc(var(--font_size) * 2);
     border-radius: var(--border_radius);
@@ -744,7 +715,7 @@ footer h4{
     
     /* ========== Main Images ========== */
     
-    #home main div div{
+    #historia main figure{
         display: grid;
         grid-template-columns: auto;
         grid-template-rows: auto auto;
@@ -758,25 +729,25 @@ footer h4{
         border-radius: calc(var(--border_radius) * 2);
     }
     
-    #home main div div img{
+    #historia main figure img{
         max-width: calc(var(--font_size) * 6);
         border-radius: calc(var(--border_radius) * 2);
     }
     
-    #home main div div p{
+    #historia main figure p{
         font-size: calc(var(--font_size) / 2);
         text-shadow: 0 0 calc(var(--font_size) / 10) black;
         max-width: calc(var(--font_size) * 6);
     }
 
-    #quiz .wrapper > main{
+    #historia .wrapper > main{
         display: grid;
         grid-template-columns: calc(var(--row_height) * 2) auto;
         grid-template-rows: auto;
         grid-template-areas: "nav_2 section";
     }
 
-    #quiz main > nav ul{
+    #historia main > nav ul{
         display: grid;
         grid-template-columns: 100%;
         grid-template-rows: calc(var(--row_height)) calc(var(--row_height) * 2) calc(var(--row_height) * 2) calc(var(--row_height) * 2);
@@ -787,14 +758,14 @@ footer h4{
         "aside_3";
     }
 
-    #quiz main > nav li{
+    #historia main > nav li{
         width: calc(100% - calc(var(--border_radius) * 2));
         height: calc(100% - calc(var(--border_radius) * 2));
     
         border-radius: calc(var(--border_radius) * 2);
     }
     
-    #quiz main > nav a{
+    #historia main > nav a{
         font-size: calc(var(--font_size) * 2);
         text-shadow: 0 0 calc(var(--font_size) / 2.5) black;
         font-family: nexa, arial;
@@ -804,27 +775,27 @@ footer h4{
         border-radius: calc(var(--border_radius) * 2);
     }
 
-    #quiz main li:nth-child(1){
+    #historia main li:nth-child(1){
         font-size: calc(var(--font_size));
         text-shadow: 0 0 calc(var(--font_size) / 5) black;
     }
 
-    #quiz .aside_info{
+    #historia .aside_info{
         width: calc(100% - calc(var(--border_radius) * 2));
         height: calc(100% - calc(var(--border_radius) * 2));
     }
 
-    #quiz .aside_1:hover a, #quiz .aside_2:hover a, #quiz .aside_3:hover a{
+    #historia .aside_1:hover a, #historia .aside_2:hover a, #historia .aside_3:hover a{
         font-size: calc(var(--font_size) * 2.5);
         text-shadow: calc(var(--font_size) / 2) calc(var(--font_size) / 2) calc(var(--font_size) / 2) black;
     }
 
-    #quiz .you_are_here_2{
+    #historia .you_are_here_2{
         width: calc(100% - var(--border_radius));
         height: calc(100% - var(--border_radius));
     }
 
-    #quiz main section > div{
+    #historia main section > div{
         border-radius: calc(var(--border_radius) * 2);
     
         width: calc(100% - calc(var(--border_radius) * 2));

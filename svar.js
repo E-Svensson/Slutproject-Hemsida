@@ -1,31 +1,47 @@
 function getData(){
 
-    window.scrollTo(0, 0);
+    window.scrollTo(0, 0); // Skrollar till toppen av sidan
 
-    var quizQuestion1 = document.getElementsByName('question_1'); // Variabel för alternativen i fråga 1
+    let allInputs = document.getElementsByTagName('input'); // Variabel för alla 'input'-element
 
-    let allInputs = document.getElementsByTagName('input');
+    // Lägger till 'disabled'-attributen till alla 'input'-element
+    for (let x of allInputs){        
+        x.setAttribute('disabled', '')  
+    }                                   
 
-    for (let x of allInputs){
-        x.setAttribute('disabled', '')
-    }
+    // Fråga 1
+    question('question_1', "Bad_Romance");
 
-    for (var i = 0; i < quizQuestion1.length; i++){ // Går igenom alla alternativ
-        if (quizQuestion1[i].checked){ // Tar reda på vilket alternativ som är valt
+    question('question_2', "Cutting_Crew");
+}
 
-            if (quizQuestion1[i].value == "Bad_Romance"){ // Om svaret är korrekt svar
-                quizQuestion1[i].closest("fieldset").setAttribute("class", "correct")
-            } else{ // Om svaret är inkorrekt
-                quizQuestion1[i].closest("fieldset").setAttribute("class", "incorrect")
+function question(name, correct_answer){
 
-                for (var j = 0; j < quizQuestion1.length; j++){
-                    if (quizQuestion1[j].value == "Bad_Romance"){
-                        quizQuestion1[j].closest("p").setAttribute("class", "correct")
+    // Variabel för alternativen i fråga 1
+    var alternativ = document.getElementsByName(name);
+
+    // Går igenom alla alternativ
+    for (var i = 0; i < alternativ.length; i++){
+
+        // Ditt valda alternativ
+        if (alternativ[i].checked){
+
+            // Om svaret är korrekt ... , annars ...
+            if (alternativ[i].value == correct_answer){
+                alternativ[i].closest("fieldset").setAttribute("class", "correct") // Adderar klassen "correct" till närmsta 'fieldset'.
+            } else{
+                alternativ[i].closest("fieldset").setAttribute("class", "incorrect") // Adderar klassen "incorrect" till närmsta 'fieldset'.
+
+                // Går genom alla alternativ
+                for (var j = 0; j < alternativ.length; j++){
+
+                    // Det korrekta alternativet
+                    if (alternativ[j].value == correct_answer){
+                        alternativ[j].closest("p").setAttribute("class", "correct") // Adderar klassen "correct" till närmsta 'p'.
+                        break;
                     }
-                    break;
                 }
             }
-
             break;
         }
     }
