@@ -10,9 +10,25 @@ function getData(){
     }                                   
 
     // Fråga 1
-    question('question_1', "Bad_Romance");
+    question('question_1', "Bad Romance");
 
-    question('question_2', "Cutting_Crew");
+    // Fråga 2
+    question('question_2', "Cutting Crew");
+
+    // Fråga 3
+    question('question_3', "Dumma mig 2");
+    
+    // Fråga 4
+    question('question_4', "Run away");
+
+    // Fråga 5
+    question('question_5', "Nicki Minaj");
+
+    // Fråga 6
+    question('question_6', "Alternativ 2");
+
+    // Fråga 8
+    question('question_8', "Alternativ 2");
 }
 
 function question(name, correct_answer){
@@ -23,26 +39,31 @@ function question(name, correct_answer){
     // Går igenom alla alternativ
     for (var i = 0; i < alternativ.length; i++){
 
-        // Ditt valda alternativ
-        if (alternativ[i].checked){
+        // Om ditt valda svar är korrekt ... , annars ...
+        if (alternativ[i].checked == true && alternativ[i].value == correct_answer){
 
-            // Om svaret är korrekt ... , annars ...
-            if (alternativ[i].value == correct_answer){
-                alternativ[i].closest("fieldset").setAttribute("class", "correct") // Adderar klassen "correct" till närmsta 'fieldset'.
-            } else{
-                alternativ[i].closest("fieldset").setAttribute("class", "incorrect") // Adderar klassen "incorrect" till närmsta 'fieldset'.
+            // Adderar klassen "correct" till närmsta 'fieldset'.
+            alternativ[i].closest("fieldset").setAttribute("class", "correct")
 
-                // Går genom alla alternativ
-                for (var j = 0; j < alternativ.length; j++){
+        } else {
 
-                    // Det korrekta alternativet
-                    if (alternativ[j].value == correct_answer){
-                        alternativ[j].closest("p").setAttribute("class", "correct") // Adderar klassen "correct" till närmsta 'p'.
-                        break;
-                    }
+            // Adderar klassen "incorrect" till närmsta 'fieldset'.
+            alternativ[i].closest("fieldset").setAttribute("class", "incorrect")
+
+            // Går genom alla alternativ
+            for (var j = 0; j < alternativ.length; j++){
+
+                // Det korrekta alternativet
+                if (alternativ[j].value == correct_answer){
+
+                    // Adderar klassen "correct" till närmsta 'p'
+                    alternativ[j].closest("p").setAttribute("class", "the_correct")
+
+                    break;
                 }
             }
-            break;
         }
+        break;
+        
     }
 }

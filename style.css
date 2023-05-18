@@ -15,7 +15,7 @@
     --card_colour_50: rgba(255, 223, 252, 0.5);
 
     --correct: rgba(31, 138, 31, 0.5);
-    --correct_100: rgba(31, 138, 31, 1);
+    --correct_100: hsl(120, 30%, 31%);
     --incorrect: rgb(228, 18, 18, 0.5);
 }
 
@@ -374,6 +374,18 @@ form{
     align-items: center;
 }
 
+.betygForm{
+    float: right;
+}
+
+.betygForm p:not(p:nth-child(1)){
+    flex-direction: column;
+}
+
+.betygForm p:nth-child(1){
+    justify-content: center;
+}
+
 form fieldset{
     border-radius: var(--border_radius);
 
@@ -435,7 +447,7 @@ form p:has(input[type=radio]:checked){
     background-color: var(--card_colour_50);
 }
 
-form p:has(input:not(input[disabled])):hover{
+form:not(.betygForm) p:has(input:not(input[disabled])):hover{
     background-color: var(--card_colour_50);
 }
 
@@ -445,6 +457,10 @@ form label{
 
 .correct{
     background-color: var(--correct);
+}
+
+.the_correct{
+    background-color: var(--correct_100);
 }
 
 .incorrect{
