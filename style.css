@@ -347,7 +347,7 @@ header h1{
 
 /* ========== Main Form ========== */
 
-form input[type=text], input[type=radio], textarea, button[type=submit]{
+form input[type=text], input[type=radio], textarea, button[type=submit], input[type=button]{
     font-size: inherit;
     font-family: inherit;
     color: black;
@@ -356,7 +356,7 @@ form input[type=text], input[type=radio], textarea, button[type=submit]{
     border: 0;
 }
 
-form input[type=text], textarea, button[type=submit]{
+form input[type=text], textarea, button[type=submit], input[type=button]{
     box-shadow: 0 0 calc(var(--font_size) / 20) black;
     border-radius: var(--border_radius);
 
@@ -433,14 +433,19 @@ form div{
     margin: calc(var(--border_radius) / 2);
 }
 
-form p{
+#home form p{
     display: flex;
     align-items: center;
+    text-align: start;
 
     background-color: var(--card_colour_20);
     border-radius: var(--border_radius);
 
     margin: calc(var(--border_radius) / 2);
+}
+
+#home form fieldset:last-of-type p{
+    justify-content: center;
 }
 
 form p:has(input[type=radio]:checked){
@@ -481,6 +486,10 @@ main > div, section > div{
         radial-gradient(var(--card_colour_50), var(--card_colour_20))
 }
 
+main > div:has(aside){
+    display: flex;
+}
+
 main h2{
     font-size: calc(var(--font_size) / 3);
     text-shadow: 0 0 calc(var(--font_size) / 15) black;
@@ -507,24 +516,6 @@ main p, ul, table{
     list-style-type: disc;
 
     padding: calc(var(--border_radius) / 2);
-}
-
-/* ========== Main Form ========== */
-
-#historia form{
-    float: right;
-}
-
-#historia form p{
-    background-color: transparent;
-}
-
-#historia form p:nth-child(1){
-    justify-content: center;
-}
-
-#historia form p:not(p:nth-child(1)){
-    flex-direction: column;
 }
 
 /* ========== Main Table ========== */
@@ -562,12 +553,8 @@ tbody tr:nth-child(2n){
 /* ========== Main Images ========== */
 
 #historia main figure{
-    display: grid;
-    grid-template-columns: 100%;
-    grid-template-rows: auto auto;
-    grid-template-areas: 
-    "img"
-    "p";
+    display: flex;
+    flex-direction: column;
 
     padding: calc(var(--border_radius) / 2);
     margin: var(--border_radius);
@@ -577,23 +564,17 @@ tbody tr:nth-child(2n){
     background-color: var(--card_colour_20);
 }
 
-#historia main figure:nth-of-type(1){
+figure{
     float: left;
 }
 
-#historia main figure:nth-of-type(2){
-    float: right;
-}
-
 #historia main figure img{
-    grid-area: img;
     max-width: calc(var(--font_size) * 2);
     border-radius: var(--border_radius);
     margin: auto;
 }
 
 #historia main figure figcaption{
-    grid-area: p;
     max-width: calc(var(--font_size) * 2);
     border-radius: var(--border_radius);
 
@@ -715,14 +696,14 @@ footer h4{
         margin-bottom: var(--border_radius);
     }
     
-    #home main h2{
+    main h2{
         font-size: calc(var(--font_size));
         text-shadow: 0 0 calc(var(--font_size) / 5) black;
     
         padding: var(--border_radius);
     }
     
-    #home main p{
+    main p{
         font-size: calc(var(--font_size) / 1.5);
         text-shadow: 0 0 calc(var(--font_size) / 7.25) black;    
     
@@ -732,12 +713,7 @@ footer h4{
     /* ========== Main Images ========== */
     
     #historia main figure{
-        display: grid;
-        grid-template-columns: auto;
-        grid-template-rows: auto auto;
-        grid-template-areas: 
-        "img"
-        "p";
+        align-items: center;
     
         padding: var(--border_radius);
         margin: calc(var(--border_radius) * 2);
@@ -750,25 +726,28 @@ footer h4{
         border-radius: calc(var(--border_radius) * 2);
     }
     
-    #historia main figure p{
+    #historia main figure figcaption{
         font-size: calc(var(--font_size) / 2);
         text-shadow: 0 0 calc(var(--font_size) / 10) black;
         max-width: calc(var(--font_size) * 6);
+
+        float: right;
     }
 
     #historia .wrapper > main{
         display: grid;
-        grid-template-columns: calc(var(--row_height) * 2) auto;
-        grid-template-rows: auto;
-        grid-template-areas: "nav_2 section";
+        grid-template-columns: auto;
+        grid-template-rows: auto auto;
+        grid-template-areas: 
+        "nav_2" 
+        "section";
     }
 
     #historia main > nav ul{
         display: grid;
         grid-template-columns: 100%;
-        grid-template-rows: calc(var(--row_height)) calc(var(--row_height) * 2) calc(var(--row_height) * 2) calc(var(--row_height) * 2);
+        grid-template-rows: calc(var(--row_height)) calc(var(--row_height)) calc(var(--row_height));
         grid-template-areas:
-        "aside_info"
         "aside_1"
         "aside_2"
         "aside_3";
@@ -782,7 +761,7 @@ footer h4{
     }
     
     #historia main > nav a{
-        font-size: calc(var(--font_size) * 2);
+        font-size: calc(var(--font_size));
         text-shadow: 0 0 calc(var(--font_size) / 2.5) black;
         font-family: nexa, arial;
     
@@ -791,19 +770,9 @@ footer h4{
         border-radius: calc(var(--border_radius) * 2);
     }
 
-    #historia main li:nth-child(1){
-        font-size: calc(var(--font_size));
-        text-shadow: 0 0 calc(var(--font_size) / 5) black;
-    }
-
-    #historia .aside_info{
-        width: calc(100% - calc(var(--border_radius) * 2));
-        height: calc(100% - calc(var(--border_radius) * 2));
-    }
-
     #historia .aside_1:hover a, #historia .aside_2:hover a, #historia .aside_3:hover a{
-        font-size: calc(var(--font_size) * 2.5);
-        text-shadow: calc(var(--font_size) / 2) calc(var(--font_size) / 2) calc(var(--font_size) / 2) black;
+        font-size: calc(var(--font_size) * 1.25);
+        text-shadow: calc(var(--font_size) / 4) calc(var(--font_size) / 4) calc(var(--font_size) / 4) black;
     }
 
     #historia .you_are_here_2{
@@ -823,6 +792,10 @@ footer h4{
             radial-gradient(var(--card_colour_50), var(--card_colour_20))
     }
 
+    figure{
+        float: none;
+    }
+
     .wrapper > footer{
         height: calc(var(--row_height));
     }
@@ -837,6 +810,23 @@ footer h4{
     footer h4{
         text-shadow: 0 0 calc(var(--font_size) / 5) black;
         font-size: calc(var(--font_size));
+    }
+
+    #home .wrapper main{
+        flex-direction: row;
+    }
+
+    .betygForm{
+        float: none;
+    }
+
+    form h3{
+        font-size: var(--font_size);
+        text-shadow: 0 0 calc(var(--font_size) / 5) black;;
+    }
+
+    form audio{
+        height: var(--font_size);
     }
 }
 
