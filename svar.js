@@ -27,8 +27,8 @@ function getData(){
     // Fråga 6
     question('question_6', "Alternativ 2");
 
-    // Fråga 8
-    question('question_8', "Alternativ 2");
+    // Fråga 7
+    question('question_7', "Alternativ 2");
 }
 
 function question(name, correct_answer){

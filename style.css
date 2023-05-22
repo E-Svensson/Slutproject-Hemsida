@@ -1,4 +1,6 @@
 :root{ /*Använder för att deklarera globala variabler*/
+
+    /*Generella variabler för sidan*/
     --side_size: 20%;
     --transition_time: 0.3s;
     --background_color: rgb(19, 16, 19);
@@ -6,14 +8,17 @@
     --border_radius: 1vw;
     --row_height: 10vw;
 
+    /*Variabler angående fonter*/
     --font_color: aliceblue;
     --font_size: 5vw;
 
+    /*Variabler angående färger*/
     --card_colour_0: rgba(255, 223, 252, 0);
     --card_colour_10: rgba(255, 223, 252, 0.1);
     --card_colour_20: rgba(255, 223, 252, 0.2);
     --card_colour_50: rgba(255, 223, 252, 0.5);
 
+    /*Variabler angående färger för rättningen*/
     --correct: rgba(31, 138, 31, 0.5);
     --correct_100: hsl(120, 30%, 31%);
     --incorrect: rgb(228, 18, 18, 0.5);
@@ -27,7 +32,7 @@
     font-style: normal;
 }
 
-/* ========== Body ========== */
+/* ========== Body & Wrapper ========== */
 
 body{
     display: grid;
@@ -36,16 +41,11 @@ body{
     grid-template-areas: 
     ". div .";
 
-    margin: 0;
-
     background-color: var(--background_color);
-
     background-image: 
         linear-gradient(to right, var(--dark_bg_color), rgba(0, 0, 0, 0) var(--side_size)),
         linear-gradient(to left, var(--dark_bg_color), rgba(0, 0, 0, 0) var(--side_size));
 }
-
-/* ========== Wrapper ========== */
 
 .wrapper{
     grid-area: div;
@@ -62,8 +62,8 @@ body{
 
 .wrapper > header{
     grid-area: header;
-    display: flex;
 
+    display: flex;
     justify-content: center;
     align-items: center;
 
@@ -78,8 +78,8 @@ body{
 
 #home .wrapper > main{
     grid-area: main;
-    display: flex;
 
+    display: flex;
     justify-content: center;
     align-items: center;
 
@@ -101,8 +101,8 @@ body{
 
 .wrapper > footer{
     grid-area: footer;
-    display: flex;
 
+    display: flex;
     justify-content: center;
     align-items: center;
 
@@ -113,7 +113,6 @@ body{
 
 header > div{
     display: flex;
-
     justify-content: center;
     align-items: center;
 
@@ -126,7 +125,7 @@ header > div{
         radial-gradient(var(--card_colour_50), var(--card_colour_20))
 }
 
-header h1{
+h1{
     font-size: var(--font_size);
     text-shadow: 0 0 calc(var(--font_size) / 5) black;
     font-family: nexa, arial;
@@ -139,7 +138,7 @@ header h1{
 
 .wrapper > nav ul{
     display: grid;
-    grid-template-columns: calc(var(--row_height) / 2) auto auto auto;
+    grid-template-columns: calc(var(--row_height) / 2) /* Bestämmer bredd på "hem"-knappen */ auto auto auto;
     grid-template-rows: auto;
     grid-template-areas:
     "card_home card_1 card_2 card_3";
@@ -163,7 +162,7 @@ header h1{
         radial-gradient(var(--card_colour_20), var(--card_colour_0));
     border-radius: var(--border_radius);
 
-    color:black;
+    color: black;
 
     transition: 
         width var(--transition_time) ease, 
@@ -199,30 +198,22 @@ header h1{
         color var(--transition_time) ease;
 }
 
-.card_home{
-    grid-area: card_home;
-}
+/* Deklarerar grid-areas för nav-elementen */
+.card_home{ grid-area: card_home; }
+.card_1{ grid-area: card_1; }
+.card_2{ grid-area: card_2; }
+.card_3{ grid-area: card_3; }
 
-.card_1{
-    grid-area: card_1;
-}
-
-.card_2{
-    grid-area: card_2;
-}
-
-.card_3{
-    grid-area: card_3;
-}
-
-.wrapper .card_home:hover, .wrapper .card_1:hover, .wrapper .card_2:hover, .wrapper .card_3:hover{
+.card_home:hover, .card_1:hover, .card_2:hover, .card_3:hover{
     background-color: var(--card_colour_50);
     width: 100%;
     height: 100%;
 }
 
-.wrapper .card_1:hover h2, .wrapper .card_2:hover h2, .wrapper .card_3:hover h2, .wrapper .card_home:hover i{
+.card_1:hover h2, .card_2:hover h2, .card_3:hover h2, .card_home:hover i{
     color: var(--font_color);
+
+    /* Förstorar med en åttondel */
     font-size: calc(var(--font_size) / 1.75);
     text-shadow: calc(var(--font_size) / 8.75) calc(var(--font_size) / 8.75) calc(var(--font_size) / 8.75) black;
 }
@@ -235,7 +226,7 @@ header h1{
     color: var(--font_color);
 }
 
-/* ========== Main Nav ========== */
+/* ========== #historia Nav & Section ========== */
 
 #historia section{
     grid-area: section;
@@ -452,7 +443,7 @@ form p:has(input[type=radio]:checked){
     background-color: var(--card_colour_50);
 }
 
-form:not(.betygForm) p:has(input:not(input[disabled])):hover{
+#home form p:hover{
     background-color: var(--card_colour_50);
 }
 
