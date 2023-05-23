@@ -10,7 +10,7 @@ function getData(){
     }                                   
 
     // Fråga 1
-    question('question_1', "Bad Romance");
+    question('question_1', "Bad Romance"); // question(namn, correct_answer)
 
     // Fråga 2
     question('question_2', "Cutting Crew");
@@ -19,7 +19,7 @@ function getData(){
     question('question_3', "Dumma mig 2");
     
     // Fråga 4
-    question('question_4', "Run away");
+    question('question_4', "Run Away");
 
     // Fråga 5
     question('question_5', "Nicki Minaj");
@@ -45,25 +45,25 @@ function question(name, correct_answer){
             // Adderar klassen "correct" till närmsta 'fieldset'.
             alternativ[i].closest("fieldset").setAttribute("class", "correct")
 
-        } else {
+            break;
+        
+        } else if (alternativ[i].checked == true && alternativ[i].value != correct_answer){
 
             // Adderar klassen "incorrect" till närmsta 'fieldset'.
             alternativ[i].closest("fieldset").setAttribute("class", "incorrect")
 
             // Går genom alla alternativ
             for (var j = 0; j < alternativ.length; j++){
-
+            
                 // Det korrekta alternativet
                 if (alternativ[j].value == correct_answer){
-
+            
                     // Adderar klassen "correct" till närmsta 'p'
                     alternativ[j].closest("p").setAttribute("class", "the_correct")
-
+            
                     break;
                 }
             }
         }
-        break;
-        
     }
 }

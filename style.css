@@ -5,7 +5,7 @@
     --transition_time: 0.3s;
     --background_color: rgb(19, 16, 19);
     --dark_bg_color: rgb(7, 6, 7);
-    --border_radius: 1vw;
+    --border_radius: 1em;
     --row_height: 10vw;
 
     /*Variabler angående fonter*/
@@ -63,11 +63,8 @@ body{
 .wrapper > header{
     grid-area: header;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
     height: var(--row_height);
+    width: 100%;
 }
 
 .wrapper > nav{
@@ -84,6 +81,8 @@ body{
     align-items: center;
 
     min-height: var(--row_height);
+
+    margin-top: var(--border_radius);
 }
 
 #historia .wrapper > main{
@@ -91,7 +90,7 @@ body{
 
     display: grid;
     grid-template-columns: 100%;
-    grid-template-rows: calc(var(--row_height) / 3) auto;
+    grid-template-rows: calc((var(--row_height) / 3) + var(--border_radius)) auto;
     grid-template-areas: 
     "nav_2"
     "section";
@@ -116,10 +115,11 @@ header > div{
     justify-content: center;
     align-items: center;
 
-    border-radius: var(--border_radius);
+    border-top-left-radius: var(--border_radius);
+    border-top-right-radius: var(--border_radius);
 
-    width: calc(100% - var(--border_radius));
-    height: calc(100% - var(--border_radius));
+    width: 100%; 
+    height: 100%;
 
     background-image:
         radial-gradient(var(--card_colour_50), var(--card_colour_20))
@@ -144,33 +144,27 @@ h1{
     "card_home card_1 card_2 card_3";
 
     height: 100%;
+    width: 100%;
 
     list-style-type: none;
-
-    justify-items: center;
-    align-items: center;
 
     margin: 0;
     padding: 0;
 }
 
-.wrapper > nav li{
-    width: calc(100% - var(--border_radius));
-    height: calc(100% - var(--border_radius));
+nav li{
+    width: 100%;
+    height: 100%;
 
     background-image:
-        radial-gradient(var(--card_colour_20), var(--card_colour_0));
-    border-radius: var(--border_radius);
-
+        linear-gradient(var(--card_colour_20), var(--card_colour_0));
     color: black;
 
     transition: 
-        width var(--transition_time) ease, 
-        height var(--transition_time) ease,
         background-color var(--transition_time) ease;
 }
 
-.wrapper > nav a{
+nav a{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -183,10 +177,10 @@ h1{
 
     width: 100%;
     height: 100%;
-    border-radius: var(--border_radius);
 }
 
-.wrapper > nav h2, nav i{
+nav h2, 
+nav i{
     font-size: inherit;
     color: inherit;
     margin: 0;
@@ -194,52 +188,62 @@ h1{
 
     transition: 
         text-shadow var(--transition_time) ease,
-        font-size var(--transition_time) ease,
         color var(--transition_time) ease;
 }
 
-/* Deklarerar grid-areas för nav-elementen */
-.card_home{ grid-area: card_home; }
-.card_1{ grid-area: card_1; }
-.card_2{ grid-area: card_2; }
-.card_3{ grid-area: card_3; }
-
-.card_home:hover, .card_1:hover, .card_2:hover, .card_3:hover{
-    background-color: var(--card_colour_50);
-    width: 100%;
-    height: 100%;
+.card_home{ 
+    grid-area: card_home; 
+    border-bottom-left-radius: var(--border_radius);
 }
 
-.card_1:hover h2, .card_2:hover h2, .card_3:hover h2, .card_home:hover i{
-    color: var(--font_color);
+.card_1{ 
+    grid-area: card_1; 
+}
 
-    /* Förstorar med en åttondel */
-    font-size: calc(var(--font_size) / 1.75);
-    text-shadow: calc(var(--font_size) / 8.75) calc(var(--font_size) / 8.75) calc(var(--font_size) / 8.75) black;
+.card_2{ 
+    grid-area: card_2; 
+}
+
+.card_3{ 
+    grid-area: card_3; 
+    border-bottom-right-radius: var(--border_radius);
+}
+
+.card_home:hover,
+.card_1:hover, 
+.card_2:hover, 
+.card_3:hover{
+    background-color: var(--card_colour_50);
+}
+
+.card_1:hover h2, 
+.card_2:hover h2, 
+.card_3:hover h2, 
+.card_home:hover i{
+    color: var(--font_color);
+    text-shadow: calc(var(--font_size) / 10) calc(var(--font_size) / 10) calc(var(--font_size) / 10) black;
 }
 
 .wrapper .you_are_here{
     background-image:
         radial-gradient(var(--card_colour_50), var(--card_colour_20));
-    width: calc(100% - var(--border_radius) / 2);
-    height: calc(100% - var(--border_radius) / 2);
     color: var(--font_color);
 }
 
 /* ========== #historia Nav & Section ========== */
 
-#historia section{
+section{
     grid-area: section;
+
     display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
-#historia main > nav{
+main > nav{
+    margin-top: var(--border_radius);
     grid-area: nav_2;
 }
 
-#historia main > nav ul{
+main > nav ul{
     display: grid;
     grid-template-columns: auto auto auto;
     grid-template-rows: auto;
@@ -252,51 +256,19 @@ h1{
     height: 100%;
 
     list-style-type: none;
-
-    justify-items: center;
-    align-items: center;
 }
 
-#historia main > nav li{
-    width: calc(100% - var(--border_radius));
-    height: calc(100% - var(--border_radius));
-
+main > nav li{
     background-image:
-        radial-gradient(var(--card_colour_20), var(--card_colour_0));
-    border-radius: var(--border_radius);
-
-    color: black;
-
-    transition: 
-        width var(--transition_time) ease, 
-        height var(--transition_time) ease,
-        background-color var(--transition_time) ease;
+        linear-gradient(var(--card_colour_0), var(--card_colour_20));
 }
 
-#historia main > nav a{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    text-decoration: none;
-    color: inherit;
+main > nav a{
     font-size: calc(var(--font_size) / 3);
     text-shadow: 0 0 calc(var(--font_size) / 15) black;
-    font-family: nexa, arial;
-
-    width: 100%;
-    height: 100%;
-    border-radius: var(--border_radius);
-
-    transition: 
-        text-shadow var(--transition_time) ease,
-        font-size var(--transition_time) ease,
-        color var(--transition_time) ease;
 }
 
-#historia main > nav h2{
-
-    color: inherit;
+main > nav h2{
     font-size: inherit;
     text-shadow: inherit;
 
@@ -306,6 +278,7 @@ h1{
 
 .aside_1{
     grid-area: aside_1;
+    border-top-left-radius: var(--border_radius);
 }
 
 .aside_2{
@@ -314,29 +287,23 @@ h1{
 
 .aside_3{
     grid-area: aside_3;
+    border-top-right-radius: var(--border_radius);
 }
 
-#historia .aside_1:hover, #historia .aside_2:hover, #historia .aside_3:hover{
+.aside_1:hover, 
+.aside_2:hover, 
+.aside_3:hover{
     background-color: var(--card_colour_50);
-    width: 100%;
-    height: 100%;
 }
 
-#historia .aside_1:hover a, #historia .aside_2:hover a, #historia .aside_3:hover a{
+.aside_1:hover a, 
+.aside_2:hover a, 
+.aside_3:hover a{
     color: var(--font_color);
-    font-size: calc(var(--font_size) / 2.625);
-    text-shadow: calc(var(--font_size) / 13.125) calc(var(--font_size) / 13.125) calc(var(--font_size) / 13.125) black;
+    text-shadow: calc(var(--font_size) / 15) calc(var(--font_size) / 15) calc(var(--font_size) / 15) black;
 }
 
-#historia .you_are_here_2{
-    background-image:
-        radial-gradient(var(--card_colour_50), var(--card_colour_20));
-    width: calc(100% - var(--border_radius) / 2);
-    height: calc(100% - var(--border_radius) / 2);
-    color: var(--font_color);
-}
-
-/* ========== Main Form ========== */
+/* ========== Form ========== */
 
 form input[type=text], input[type=radio], textarea, button[type=submit], input[type=button]{
     font-size: inherit;
@@ -451,27 +418,36 @@ form label{
     padding: calc(var(--border_radius) / 2);
 }
 
-.correct{
+#home .correct{
     background-color: var(--correct);
 }
 
-.the_correct{
+#home .the_correct{
     background-color: var(--correct_100);
 }
 
-.incorrect{
+#home .incorrect{
     background-color: var(--incorrect);
 }
 
 /* ========== Main ========== */
 
-main > div, section > div{
+main > div{
     border-radius: var(--border_radius);
 
-    width: calc(100% - var(--border_radius));
-    height: calc(100% - var(--border_radius));
-    margin-top: calc(var(--border_radius) / 2);
-    margin-bottom: calc(var(--border_radius) / 2);
+    width: 100%;
+    height: 100%;
+
+    background-image:
+        radial-gradient(var(--card_colour_50), var(--card_colour_20))
+}
+
+section > div{
+    border-bottom-left-radius: var(--border_radius);
+    border-bottom-right-radius: var(--border_radius);
+
+    width: 100%;
+    height: 100%;
 
     background-image:
         radial-gradient(var(--card_colour_50), var(--card_colour_20))
@@ -481,7 +457,8 @@ main > div:has(aside){
     display: flex;
 }
 
-main h2{
+main div > h2,
+main aside > h2{
     font-size: calc(var(--font_size) / 3);
     text-shadow: 0 0 calc(var(--font_size) / 15) black;
     font-family: nexa, arial;
@@ -584,14 +561,14 @@ figure{
 
 footer > div{
     display: flex;
-
-    justify-content: center;
     align-items: center;
+    justify-content: center;
 
-    border-radius: var(--border_radius);
+    border-bottom-left-radius: var(--border_radius);
+    border-bottom-right-radius: var(--border_radius);
 
-    width: calc(50% - var(--border_radius));
-    height: calc(100% - var(--border_radius));
+    width: 50%;
+    height: 100%;
 
     background-image:
         radial-gradient(var(--card_colour_50), var(--card_colour_20))
@@ -621,11 +598,13 @@ footer h4{
         height: calc(var(--row_height) * 2);
     }
 
+    .wrapper:has(aside) main > div{
+        flex-direction: column;
+    }
+
     header > div{
-        border-radius: calc(var(--border_radius) * 2);
-    
-        width: calc(100% - calc(var(--border_radius) * 2));
-        height: calc(100% - calc(var(--border_radius) * 2));
+        border-top-left-radius: calc(var(--border_radius) * 2);
+        border-top-right-radius: calc(var(--border_radius) * 2);
     }
     
     header h1{
@@ -646,52 +625,56 @@ footer h4{
         "card_2 card_3";
     }
 
-    .wrapper > nav li{
-        width: calc(100% - calc(var(--border_radius) * 2));
-        height: calc(100% - calc(var(--border_radius) * 2));
-    
-        border-radius: calc(var(--border_radius) * 2);
-    }
-
-    .wrapper > nav a{
-        font-size: calc(var(--font_size) * 1.5);
-        text-shadow: 0 0 calc(var(--font_size) / calc(3 + 1/3)) black;
+    nav li{
+        background-image: 
+            radial-gradient(var(--card_colour_20), var(--card_colour_0));
     }
     
-    .wrapper > nav i{
+    .wrapper nav i{
         font-size: calc(var(--font_size) * 2);
         text-shadow: 0 0 calc(var(--font_size) / 2.5) black;
     }
 
-    .wrapper .card_1:hover h2, .wrapper .card_2:hover h2, .wrapper .card_3:hover h2{
-        font-size: calc(var(--font_size) * 1.6875);
-        text-shadow: calc(var(--font_size) / calc(5 / 1.6875)) calc(var(--font_size) / calc(5 / 1.6875)) calc(var(--font_size) / calc(5 / 1.6875)) black;
+    .wrapper nav h2{
+        font-size: calc(var(--font_size) * 1.5);
+        text-shadow: 0 0 calc(var(--font_size) / 3.75) black;
     }
 
-    .wrapper .card_home:hover i{
-        font-size: calc(var(--font_size) * 2.25);
-        text-shadow: calc(var(--font_size) / calc(2 + 2/9)) calc(var(--font_size) / calc(2 + 2/9)) calc(var(--font_size) / calc(2 + 2/9)) black;
+    .card_home{
+        border-radius: 0;
     }
-    
-    .wrapper .you_are_here{
-        width: calc(100% - var(--border_radius));
-        height: calc(100% - var(--border_radius));
+
+    .card_2{
+        border-bottom-left-radius: calc(var(--border_radius) * 2);
+    }
+
+    .card_3{
+        border-bottom-right-radius: calc(var(--border_radius) * 2);
+    }
+
+    .card_home:hover i{
+        text-shadow: calc(var(--font_size) / 2.5) calc(var(--font_size) / 2.5) calc(var(--font_size) / 2.5) black;
+    }
+
+    .card_1:hover h2, 
+    .card_2:hover h2, 
+    .card_3:hover h2{
+        text-shadow: calc(var(--font_size) / 3.75) calc(var(--font_size) / 3.75) calc(var(--font_size) / 3.75) black;
     }
 
     #home main > div{
-        border-radius: calc(var(--border_radius) * 2);
-    
-        width: calc(100% - calc(var(--border_radius) * 2));
-        height: calc(100% - calc(var(--border_radius) * 2));
         margin-top: var(--border_radius);
         margin-bottom: var(--border_radius);
+
+        border-radius: 0;
+        border-top-left-radius: calc(var(--border_radius) * 2);
+        border-top-right-radius: calc(var(--border_radius) * 2);
     }
     
-    main h2{
+    #home main h2,
+    #historia main h2{
         font-size: calc(var(--font_size));
         text-shadow: 0 0 calc(var(--font_size) / 5) black;
-    
-        padding: var(--border_radius);
     }
     
     main p{
@@ -700,9 +683,7 @@ footer h4{
     
         padding: var(--border_radius);
     }
-    
-    /* ========== Main Images ========== */
-    
+        
     #historia main figure{
         align-items: center;
     
@@ -734,7 +715,7 @@ footer h4{
         "section";
     }
 
-    #historia main > nav ul{
+    main > nav ul{
         display: grid;
         grid-template-columns: 100%;
         grid-template-rows: calc(var(--row_height)) calc(var(--row_height)) calc(var(--row_height));
@@ -744,43 +725,34 @@ footer h4{
         "aside_3";
     }
 
-    #historia main > nav li{
-        width: calc(100% - calc(var(--border_radius) * 2));
-        height: calc(100% - calc(var(--border_radius) * 2));
-    
-        border-radius: calc(var(--border_radius) * 2);
-    }
-    
-    #historia main > nav a{
-        font-size: calc(var(--font_size));
-        text-shadow: 0 0 calc(var(--font_size) / 2.5) black;
-        font-family: nexa, arial;
-    
-        width: 100%;
-        height: 100%;
-        border-radius: calc(var(--border_radius) * 2);
+    main > nav li{
+        background-image: 
+            radial-gradient(var(--card_colour_20), var(--card_colour_0));
     }
 
-    #historia .aside_1:hover a, #historia .aside_2:hover a, #historia .aside_3:hover a{
-        font-size: calc(var(--font_size) * 1.25);
-        text-shadow: calc(var(--font_size) / 4) calc(var(--font_size) / 4) calc(var(--font_size) / 4) black;
+    main > nav a{
+        font-size: var(--font_size);
+        text-shadow: 0 0 calc(var(--font_size) / 5) black;
     }
 
-    #historia .you_are_here_2{
-        width: calc(100% - var(--border_radius));
-        height: calc(100% - var(--border_radius));
+    .aside_1{
+        border-top-left-radius: calc(var(--border_radius) * 2);
+        border-top-right-radius: calc(var(--border_radius) * 2);
     }
 
-    #historia main section > div{
-        border-radius: calc(var(--border_radius) * 2);
-    
-        width: calc(100% - calc(var(--border_radius) * 2));
-        height: calc(100% - calc(var(--border_radius) * 2));
-        margin-top: var(--border_radius);
-        margin-bottom: var(--border_radius);
-    
-        background-image:
-            radial-gradient(var(--card_colour_50), var(--card_colour_20))
+    .aside_1:hover a, 
+    .aside_2:hover a, 
+    .aside_3:hover a{
+        text-shadow: calc(var(--font_size) / 5) calc(var(--font_size) / 5) calc(var(--font_size) / 5) black;
+    }
+
+    #historia section > div{
+        border-radius: 0;
+    }
+
+    #historia main > nav h2{
+        font-size: var(--font_size);
+        text-shadow: inherit;
     }
 
     figure{
@@ -792,10 +764,10 @@ footer h4{
     }
 
     footer > div{
-        border-radius: calc(var(--border_radius) * 2);
-    
-        width: calc(100% - calc(var(--border_radius) * 2));
-        height: calc(100% - calc(var(--border_radius) * 2));
+        width: 100%;
+
+        border-bottom-left-radius: calc(var(--border_radius) * 2);
+        border-bottom-right-radius: calc(var(--border_radius) * 2);
     }
     
     footer h4{
