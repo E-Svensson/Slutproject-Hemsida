@@ -1,3 +1,21 @@
+
+let button;
+
+function init(){ // Kod gjord av David
+    button = document.getElementById("svarsknapp");
+    console.log(button);
+
+    button.addEventListener("click", event=>{
+        console.log("Edvin");
+         getData();
+         event.preventDefault();
+    })
+   
+}
+
+window.onload = init;
+
+
 function getData(){
 
     window.scrollTo(0, 0); // Skrollar till toppen av sidan
@@ -34,10 +52,10 @@ function getData(){
 function question(name, correct_answer){
 
     // Variabel för alternativen i fråga 1
-    var alternativ = document.getElementsByName(name);
+    let alternativ = document.getElementsByName(name);
 
     // Går igenom alla alternativ
-    for (var i = 0; i < alternativ.length; i++){
+    for (let i = 0; i < alternativ.length; i++){
 
         // Om ditt valda svar är korrekt ... , annars ...
         if (alternativ[i].checked == true && alternativ[i].value == correct_answer){
@@ -53,7 +71,7 @@ function question(name, correct_answer){
             alternativ[i].closest("fieldset").setAttribute("class", "incorrect")
 
             // Går genom alla alternativ
-            for (var j = 0; j < alternativ.length; j++){
+            for (let j = 0; j < alternativ.length; j++){
             
                 // Det korrekta alternativet
                 if (alternativ[j].value == correct_answer){
