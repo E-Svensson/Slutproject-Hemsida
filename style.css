@@ -2,7 +2,7 @@
 
     /*Generella variabler för sidan*/
     --side_size: 20%;
-    --transition_time: 0.3s;
+    --transition_time: 0.2s;
     --background_color: rgb(19, 16, 19);
     --dark_bg_color: rgb(7, 6, 7);
     --border_radius: 1em;
@@ -10,7 +10,7 @@
 
     /*Variabler angående fonter*/
     --font_color: aliceblue;
-    --font_size: 5vw;
+    --font_size: 5em;
 
     /*Variabler angående färger*/
     --card_colour_0: rgba(255, 223, 252, 0);
@@ -58,54 +58,38 @@ body{
     "nav"
     "main"
     "footer";
+
+    justify-items: center;
 }
 
 .wrapper > header{
-    grid-area: header;
+    grid-area: header; /* Wrapper */
 
     height: var(--row_height);
     width: 100%;
 }
 
 .wrapper > nav{
-    grid-area: nav;
+    grid-area: nav; /* Wrapper */
 
     height: calc(var(--row_height) / 2);
+    width: 100%;
 }
 
-#home .wrapper > main{
-    grid-area: main;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.wrapper > main{
+    grid-area: main; /* Wrapper */
 
     min-height: var(--row_height);
+    width: 100%;
 
     margin-top: var(--border_radius);
-}
-
-#historia .wrapper > main{
-    grid-area: main;
-
-    display: grid;
-    grid-template-columns: 100%;
-    grid-template-rows: calc((var(--row_height) / 3) + var(--border_radius)) auto;
-    grid-template-areas: 
-    "nav_2"
-    "section";
-
-    min-height: var(--row_height);
 }
 
 .wrapper > footer{
     grid-area: footer;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
     height: calc(var(--row_height) / 3);
+    width: 50%;
 }
 
 /* ========== Header ========== */
@@ -432,6 +416,21 @@ form label{
 
 /* ========== Main ========== */
 
+#home main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#historia main{
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: calc((var(--row_height) / 3) + var(--border_radius)) auto;
+    grid-template-areas: 
+    "nav_2"
+    "section";
+}
+
 main > div{
     border-radius: var(--border_radius);
 
@@ -559,7 +558,7 @@ figure{
 
 /* ========== Footer ========== */
 
-footer > div{
+footer{
     display: flex;
     align-items: center;
     justify-content: center;
