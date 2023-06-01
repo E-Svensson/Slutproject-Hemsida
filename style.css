@@ -14,6 +14,8 @@
     --text_shadow_h1: calc(var(--font_size_h1) / 10);
     --font_size_h2: 40px;
     --text_shadow_h2: calc(var(--font_size_h2) / 10);
+    --font_size_p: 20px;
+    --text_shadow_p: calc(var(--font_size_p) / 10);
 
     /*Variabler angående färger*/
     --card_colour_0: rgba(255, 223, 252, 0);
@@ -50,6 +52,13 @@ h1{
 h2{
     font-size: var(--font_size_h2);
     text-shadow: 0 0 var(--text_shadow_h2) black;
+    text-align: center;
+}
+
+p{
+    font-size: var(--font_size_p);
+    text-shadow: 0 0 var(--text_shadow_p) black;
+    text-align: center;
 }
 
 h1, h2, h3, h4, p{
@@ -77,10 +86,11 @@ body{
 
     display: grid;
     grid-template-columns: 100%;
-    grid-template-rows: auto auto auto auto;
+    grid-template-rows: auto auto var(--border_radius) auto auto;
     grid-template-areas:
     "header"
     "nav"
+    "."
     "main"
     "footer";
 
@@ -106,8 +116,6 @@ body{
 
     min-height: var(--row_height);
     width: 100%;
-
-    margin-top: var(--border_radius);
 }
 
 .wrapper > footer{
@@ -222,22 +230,54 @@ nav i{
     color: var(--font_color);
 }
 
-/* ========== #historia Nav & Section ========== */
+/* ========== Main ========== */
 
-section{
+#home main{
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: auto;
+    grid-template-areas: 
+    "aside form";
+
+    background-image:
+        radial-gradient(var(--card_colour_50), var(--card_colour_20));
+    border-radius: var(--border_radius);
+}
+
+#historia main{
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: calc(var(--row_height) / 1.5) auto;
+    grid-template-areas: 
+    "nav_2"
+    "section";
+}
+
+main > section{
     grid-area: section;
-
     display: flex;
+    flex-direction: column;
+
+    width: 100%;
+    height: 100%;
+
+    background-image:
+        radial-gradient(var(--card_colour_50), var(--card_colour_20));
+    border-bottom-left-radius: var(--border_radius);
+    border-bottom-right-radius: var(--border_radius);
+}
+
+main > section h2{
+    text-decoration: underline;
 }
 
 main > nav{
-    margin-top: var(--border_radius);
     grid-area: nav_2;
 }
 
 main > nav ul{
     display: grid;
-    grid-template-columns: auto auto auto;
+    grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: auto;
     grid-template-areas:
     "aside_1 aside_2 aside_3";
@@ -252,17 +292,12 @@ main > nav ul{
 
 main > nav li{
     background-image:
-        linear-gradient(var(--card_colour_0), var(--card_colour_20));
-}
-
-main > nav a{
-    font-size: calc(var(--font_size) / 3);
-    text-shadow: 0 0 calc(var(--font_size) / 15) black;
+        radial-gradient(var(--card_colour_20), var(--card_colour_0));
 }
 
 main > nav h2{
-    font-size: inherit;
-    text-shadow: inherit;
+    font-size: calc(var(--font_size_h2) / 1.5);
+    text-shadow: 0 0 calc(var(--text_shadow_h2) / 1.5) black;
 
     margin: 0;
     border-radius: var(--border_radius);
@@ -288,11 +323,11 @@ main > nav h2{
     background-color: var(--card_colour_50);
 }
 
-.aside_1:hover a, 
-.aside_2:hover a, 
-.aside_3:hover a{
+.aside_1:hover h2, 
+.aside_2:hover h2, 
+.aside_3:hover h2{
     color: var(--font_color);
-    text-shadow: calc(var(--font_size) / 15) calc(var(--font_size) / 15) calc(var(--font_size) / 15) black;
+    text-shadow: calc(var(--text_shadow_h2) / 1.5) calc(var(--text_shadow_h2) / 1.5) calc(var(--text_shadow_h2) / 1.5) black;
 }
 
 /* ========== Form ========== */
@@ -366,7 +401,6 @@ form h3{
 }
 
 form audio{
-    height: calc(var(--font_size) / 2);
     box-shadow: 0 0 calc(var(--font_size) / 20) black;
     border-radius: 100em;
 
@@ -420,77 +454,6 @@ form label{
 
 #home .incorrect{
     background-color: var(--incorrect);
-}
-
-/* ========== Main ========== */
-
-#home main{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-#historia main{
-    display: grid;
-    grid-template-columns: 100%;
-    grid-template-rows: calc((var(--row_height) / 3) + var(--border_radius)) auto;
-    grid-template-areas: 
-    "nav_2"
-    "section";
-}
-
-main > div{
-    border-radius: var(--border_radius);
-
-    width: 100%;
-    height: 100%;
-
-    background-image:
-        radial-gradient(var(--card_colour_50), var(--card_colour_20))
-}
-
-section > div{
-    border-bottom-left-radius: var(--border_radius);
-    border-bottom-right-radius: var(--border_radius);
-
-    width: 100%;
-    height: 100%;
-
-    background-image:
-        radial-gradient(var(--card_colour_50), var(--card_colour_20))
-}
-
-main > div:has(aside){
-    display: flex;
-}
-
-main div > h2,
-main aside > h2{
-    font-size: calc(var(--font_size) / 3);
-    text-shadow: 0 0 calc(var(--font_size) / 15) black;
-    font-family: nexa, arial;
-    color: var(--font_color);
-
-    text-align: center;
-
-    padding: calc(var(--border_radius) / 2);
-}
-
-main h2:not(nav h2){
-    text-decoration: underline;
-}
-
-main p, ul, table{
-    font-size: calc(var(--font_size) / 4);
-    text-shadow: 0 0 calc(var(--font_size) / 20) black;
-    font-family: nexa, arial;
-    color: var(--font_color);
-
-    text-align: center;
-    list-style-position: inside;
-    list-style-type: disc;
-
-    padding: calc(var(--border_radius) / 2);
 }
 
 /* ========== Main Table ========== */
