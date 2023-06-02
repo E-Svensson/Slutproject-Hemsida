@@ -40,28 +40,49 @@
 /* ========== Text ========== */
 
 h1{
-    font-size: var(--font_size_h1);
-    text-shadow: 0 0 var(--text_shadow_h1) black;
+    font-size: 80px;
+    text-shadow: 0 0 8px black;
 }
 
 .wrapper .fa{ /*För hem-ikonen*/
-    font-size: var(--font_size_h2);
-    text-shadow: 0 0 var(--text_shadow_h2) black;
+    font-size: 60px;
+    text-shadow: 0 0 6px black;
 }
 
-h2{
-    font-size: var(--font_size_h2);
-    text-shadow: 0 0 var(--text_shadow_h2) black;
+h2, thead, tfoot{
+    font-size: 40px;
+    text-shadow: 0 0 4px black;
     text-align: center;
 }
 
-p{
-    font-size: var(--font_size_p);
-    text-shadow: 0 0 var(--text_shadow_p) black;
+h3{
+    font-size: 30px;
+    text-shadow: 0 0 3px black;
     text-align: center;
 }
 
-h1, h2, h3, h4, p{
+p, label, legend, caption, tbody{
+    font-size: 20px;
+    text-shadow: 0 0 2px black;
+    text-align: center;
+    padding: var(--border_radius);
+    margin: 0;
+}
+
+figcaption, h4{
+    font-size: 15px;
+    text-shadow: 0 0 1.5px black;
+    text-align: center;
+}
+
+input, textarea, button{
+    font-size: 15px;
+    text-align: center;
+    color: black;
+    font-family: nexa, arial;
+}
+
+h1, h2, h3, h4, p, figcaption, label, legend, caption, thead, tbody, tfoot{
     font-family: nexa, arial;
     color: var(--font_color);
 }
@@ -159,7 +180,8 @@ header{
     padding: 0;
 }
 
-nav li{
+nav li,
+section li{
     background-image:
         radial-gradient(var(--card_colour_20), var(--card_colour_0));
     color: black;
@@ -168,7 +190,8 @@ nav li{
         background-color var(--transition_time) ease;
 }
 
-nav a{
+nav a,
+section a{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -183,7 +206,8 @@ nav a{
 }
 
 nav h2,
-nav i{
+nav i,
+section h2{
     color: inherit;
 
     transition: 
@@ -237,11 +261,7 @@ nav i{
     grid-template-columns: 2fr 1fr;
     grid-template-rows: auto;
     grid-template-areas: 
-    "aside form";
-
-    background-image:
-        radial-gradient(var(--card_colour_50), var(--card_colour_20));
-    border-radius: var(--border_radius);
+    "article section";
 }
 
 #historia main{
@@ -249,38 +269,63 @@ nav i{
     grid-template-columns: 100%;
     grid-template-rows: calc(var(--row_height) / 1.5) auto;
     grid-template-areas: 
-    "nav_2"
-    "section";
+    "section"
+    "article";
 }
 
-main > section{
-    grid-area: section;
-    display: flex;
-    flex-direction: column;
+#genrer main{
+    background-image:
+        radial-gradient(var(--card_colour_50), var(--card_colour_20));
+    border-radius: var(--border_radius);
+}
+
+#quiz main{
+    background-image:
+        radial-gradient(var(--card_colour_50), var(--card_colour_20));
+    border-radius: var(--border_radius);
+}
+
+main > article{
+    grid-area: article;
 
     width: 100%;
     height: 100%;
 
     background-image:
         radial-gradient(var(--card_colour_50), var(--card_colour_20));
+}
+
+#home article{
+    border-bottom-left-radius: var(--border_radius);
+    border-top-left-radius: var(--border_radius);
+}
+
+#home section{
+    background-image:
+        radial-gradient(var(--card_colour_50), var(--card_colour_20));
+    border-bottom-right-radius: var(--border_radius);
+    border-top-right-radius: var(--border_radius);
+}
+
+#historia article{
     border-bottom-left-radius: var(--border_radius);
     border-bottom-right-radius: var(--border_radius);
 }
 
-main > section h2{
+main > article h2{
     text-decoration: underline;
 }
 
-main > nav{
-    grid-area: nav_2;
+main > section{
+    grid-area: section;
 }
 
-main > nav ul{
+main > section ul{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: auto;
     grid-template-areas:
-    "aside_1 aside_2 aside_3";
+    "section_1 section_2 section_3";
 
     margin: 0;
     padding: 0;
@@ -290,12 +335,12 @@ main > nav ul{
     list-style-type: none;
 }
 
-main > nav li{
+main > section li{
     background-image:
         radial-gradient(var(--card_colour_20), var(--card_colour_0));
 }
 
-main > nav h2{
+main > section h2{
     font-size: calc(var(--font_size_h2) / 1.5);
     text-shadow: 0 0 calc(var(--text_shadow_h2) / 1.5) black;
 
@@ -303,49 +348,51 @@ main > nav h2{
     border-radius: var(--border_radius);
 }
 
-.aside_1{
-    grid-area: aside_1;
+.section_1{
+    grid-area: section_1;
     border-top-left-radius: var(--border_radius);
 }
 
-.aside_2{
-    grid-area: aside_2;
+.section_2{
+    grid-area: section_2;
 }
 
-.aside_3{
-    grid-area: aside_3;
+.section_3{
+    grid-area: section_3;
     border-top-right-radius: var(--border_radius);
 }
 
-.aside_1:hover, 
-.aside_2:hover, 
-.aside_3:hover{
+.section_1:hover, 
+.section_2:hover, 
+.section_3:hover{
     background-color: var(--card_colour_50);
 }
 
-.aside_1:hover h2, 
-.aside_2:hover h2, 
-.aside_3:hover h2{
+.section_1:hover h2, 
+.section_2:hover h2, 
+.section_3:hover h2{
     color: var(--font_color);
     text-shadow: calc(var(--text_shadow_h2) / 1.5) calc(var(--text_shadow_h2) / 1.5) calc(var(--text_shadow_h2) / 1.5) black;
 }
 
 /* ========== Form ========== */
 
-form input[type=text], input[type=radio], textarea, button[type=submit], input[type=button]{
-    font-size: inherit;
-    font-family: inherit;
-    color: black;
-
+input[type=text], 
+input[type=radio], textarea, button[type=submit], input[type=button]{
     text-align: start;
     border: 0;
 }
 
-form input[type=text], textarea, button[type=submit], input[type=button]{
+textarea, 
+input,
+button{
     box-shadow: 0 0 calc(var(--font_size) / 20) black;
     border-radius: var(--border_radius);
 
+    text-align: start;
+
     padding: var(--border_radius);
+    border: 0;
 }
 
 form input[type=radio]{
@@ -353,49 +400,51 @@ form input[type=radio]{
 }
 
 form{
+    width: 100%;
+}
+
+form p{
     display: flex;
-    justify-content: center;
-    flex-direction: column;
     align-items: center;
+    text-align: start;
+
+    background-color: var(--card_colour_20);
+    border-radius: var(--border_radius);
+
+    margin: calc(var(--border_radius) / 2);
 }
 
-.betygForm{
-    float: right;
-}
-
-.betygForm p:not(p:nth-child(1)){
+#home form p{
     flex-direction: column;
 }
 
-.betygForm p:nth-child(1){
-    justify-content: center;
+#quiz form p{
+    flex-direction: row;
+    padding: calc(var(--border_radius) / 2);
 }
 
 form fieldset{
-    border-radius: var(--border_radius);
+    display: flex;
+    text-align: center;
+    flex-direction: column;
 
-    width: calc(100% - var(--border_radius));
-    height: calc(100% - var(--border_radius));
+    margin: calc(var(--border_radius) / 2);
+
+    border-radius: var(--border_radius);
 
     background-color: var(--card_colour_20);
     margin: calc(var(--border_radius) / 2);
     padding: 0;
 }
 
-form legend{
-    text-align: center;
+#quiz form fieldset:last-of-type p{
+    justify-content: center;
 }
 
 form h3{
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-
-    font-size: calc(var(--font_size) / 3);
-    text-shadow: 0 0 calc(var(--font_size) / 15) black;
-    font-family: nexa, arial;
-    color: var(--font_color);
-    text-align: center;
 
     margin: var(--border_radius);
 }
@@ -409,34 +458,11 @@ form audio{
     text-shadow: none;
 }
 
-form div{
-    display: flex;
-    text-align: center;
-    flex-direction: column;
-
-    margin: calc(var(--border_radius) / 2);
-}
-
-#home form p{
-    display: flex;
-    align-items: center;
-    text-align: start;
-
-    background-color: var(--card_colour_20);
-    border-radius: var(--border_radius);
-
-    margin: calc(var(--border_radius) / 2);
-}
-
-#home form fieldset:last-of-type p{
-    justify-content: center;
-}
-
 form p:has(input[type=radio]:checked){
     background-color: var(--card_colour_50);
 }
 
-#home form p:hover{
+#quiz form p:hover{
     background-color: var(--card_colour_50);
 }
 
@@ -444,15 +470,15 @@ form label{
     padding: calc(var(--border_radius) / 2);
 }
 
-#home .correct{
+#quiz .correct{
     background-color: var(--correct);
 }
 
-#home .the_correct{
+#quiz .the_correct{
     background-color: var(--correct_100);
 }
 
-#home .incorrect{
+#quiz .incorrect{
     background-color: var(--incorrect);
 }
 
@@ -463,17 +489,15 @@ table{
 }
 
 thead, tfoot{
-    font-size: calc(var(--font_size) / 3);
     background-color: var(--card_colour_50);
-    border-top-left-radius: 100em;
 }
 
 td, th{
     padding: calc(var(--border_radius) / 2);
 }
 
-tbody td{
-    padding: calc(var(--border_radius) / 2);
+video{
+    width: 300px;
 }
 
 tbody ul{
@@ -488,11 +512,14 @@ tbody tr:nth-child(2n){
     background-color: var(--card_colour_10);
 }
 
-/* ========== Main Images ========== */
+/* ========== Figure, Figcaption ========== */
 
-#historia main figure{
+figure{
     display: flex;
     flex-direction: column;
+    float: left;
+
+    width: 300px;
 
     padding: calc(var(--border_radius) / 2);
     margin: var(--border_radius);
@@ -502,29 +529,13 @@ tbody tr:nth-child(2n){
     background-color: var(--card_colour_20);
 }
 
-figure{
-    float: left;
+figure img, figure figcaption{
+    max-width: 300px;
+    border-radius: var(--border_radius);
 }
 
-#historia main figure img{
-    max-width: calc(var(--font_size) * 2);
-    border-radius: var(--border_radius);
-    margin: auto;
-}
-
-#historia main figure figcaption{
-    max-width: calc(var(--font_size) * 2);
-    border-radius: var(--border_radius);
-
-    padding: 0;
-    margin: 0;
+figure figcaption{
     padding-top: inherit;
-
-    font-family: nexa;
-    color: var(--font_color);
-    font-size: calc(var(--font_size) / 6);
-    text-shadow: 0 0 calc(var(--font_size) / 30) black;
-    text-align: center;
 }
 
 /* ========== Footer ========== */
@@ -537,18 +548,8 @@ footer{
     border-bottom-left-radius: var(--border_radius);
     border-bottom-right-radius: var(--border_radius);
 
-    width: 50%;
-    height: 100%;
-
     background-image:
         radial-gradient(var(--card_colour_50), var(--card_colour_20))
-}
-
-footer h4{
-    color: var(--font_color);
-    text-shadow: 0 0 calc(var(--font_size) / 20) black;
-    font-size: calc(var(--font_size) / 4);
-    font-family: nexa, arial;
 }
 
 /* ========== Mobile ========== */

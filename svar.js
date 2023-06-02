@@ -7,8 +7,8 @@ function init(){ // Kod gjord av David
 
     button.addEventListener("click", event=>{
         console.log("Edvin");
-         getData();
-         event.preventDefault();
+        getData();
+        event.preventDefault();
     })
    
 }
