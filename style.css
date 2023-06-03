@@ -3,21 +3,13 @@
     /*Generella variabler för sidan*/
     --side_size: 15%;
     --transition_time: 0.2s;
-    --background_color: rgb(19, 16, 19);
-    --dark_bg_color: rgb(7, 6, 7);
     --border_radius: 20px;
     --row_height: 100px;
 
-    /*Variabler angående fonter*/
-    --font_color: aliceblue;
-    --font_size_h1: 80px;
-    --text_shadow_h1: calc(var(--font_size_h1) / 10);
-    --font_size_h2: 40px;
-    --text_shadow_h2: calc(var(--font_size_h2) / 10);
-    --font_size_p: 20px;
-    --text_shadow_p: calc(var(--font_size_p) / 10);
-
     /*Variabler angående färger*/
+    --font_color: aliceblue;
+    --background_color: #131013;
+    --dark_bg_color: rgb(7, 6, 7);
     --card_colour_0: rgba(255, 223, 252, 0);
     --card_colour_10: rgba(255, 223, 252, 0.1);
     --card_colour_20: rgba(255, 223, 252, 0.2);
@@ -37,7 +29,7 @@
     font-style: normal;
 }
 
-/* ========== Text ========== */
+/* ========== Global Text ========== */
 
 h1{
     font-size: 80px;
@@ -87,9 +79,32 @@ h1, h2, h3, h4, p, figcaption, label, legend, caption, thead, tbody, tfoot{
     color: var(--font_color);
 }
 
+/* ========== LoVe Focus HAte ========== */
+
+a:link{
+    color: blue;
+}
+
+a:visited{
+    color: darkorchid;
+}
+
+a:focus{
+    color: red;
+}
+
+a:hover{
+    color: green;
+}
+
+a:active{
+    color: yellow;
+}
+
 /* ========== Body & Wrapper ========== */
 
 body{
+    /*Grid för body*/
     display: grid;
     grid-template-columns: var(--side_size) 1fr var(--side_size);
     grid-template-rows: auto;
@@ -97,14 +112,17 @@ body{
     ". div .";
 
     background-color: var(--background_color);
+
+    /*Skapar gradients i kanterna*/
     background-image: 
         linear-gradient(to right, var(--dark_bg_color), rgba(0, 0, 0, 0) var(--side_size)),
         linear-gradient(to left, var(--dark_bg_color), rgba(0, 0, 0, 0) var(--side_size));
 }
 
 .wrapper{
-    grid-area: div;
+    grid-area: div; /*Body*/
 
+    /*Grid för Wrapper*/
     display: grid;
     grid-template-columns: 100%;
     grid-template-rows: auto auto var(--border_radius) auto auto;
@@ -119,28 +137,28 @@ body{
 }
 
 .wrapper > header{
-    grid-area: header;
+    grid-area: header; /*Wrapper*/
 
     height: calc(var(--row_height) * 1.5);
     width: 100%;
 }
 
 .wrapper > nav{
-    grid-area: nav;
+    grid-area: nav; /*Wrapper*/
 
     height: var(--row_height);
     width: 100%;
 }
 
 .wrapper > main{
-    grid-area: main;
+    grid-area: main; /*Wrapper*/
 
     min-height: var(--row_height);
     width: 100%;
 }
 
 .wrapper > footer{
-    grid-area: footer;
+    grid-area: footer; /*Wrapper*/
 
     height: calc(var(--row_height) / 3);
     width: 50%;
@@ -159,6 +177,7 @@ header{
     width: 100%; 
     height: 100%;
 
+    /*Skapar en rund gradient*/
     background-image:
         radial-gradient(var(--card_colour_50), var(--card_colour_20))
 }
@@ -166,6 +185,7 @@ header{
 /* ========== Nav ========== */
 
 .wrapper > nav ul{
+    /*Grid för Nav*/
     display: grid;
     grid-template-columns: var(--row_height) 1fr 1fr 1fr;
     grid-template-rows: 100%;
@@ -182,16 +202,18 @@ header{
 
 nav li,
 section li{
+    /*Skapar en rund gradient*/
     background-image:
         radial-gradient(var(--card_colour_20), var(--card_colour_0));
     color: black;
 
+    /*Skapar en transition*/
     transition: 
         background-color var(--transition_time) ease;
 }
 
-nav a,
-section a{
+.wrapper nav a,
+.wrapper section a{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -210,26 +232,27 @@ nav i,
 section h2{
     color: inherit;
 
+    /*Skapar en transition*/
     transition: 
         text-shadow var(--transition_time) ease,
         color var(--transition_time) ease;
 }
 
 .card_home{ 
-    grid-area: card_home; 
+    grid-area: card_home; /*Nav*/
     border-bottom-left-radius: var(--border_radius);
 }
 
 .card_1{ 
-    grid-area: card_1; 
+    grid-area: card_1; /*Nav*/
 }
 
 .card_2{ 
-    grid-area: card_2; 
+    grid-area: card_2; /*Nav*/
 }
 
 .card_3{ 
-    grid-area: card_3; 
+    grid-area: card_3; /*Nav*/
     border-bottom-right-radius: var(--border_radius);
 }
 
@@ -245,10 +268,11 @@ section h2{
 .card_3:hover h2, 
 .card_home:hover i{
     color: var(--font_color);
-    text-shadow: var(--text_shadow_h2) var(--text_shadow_h2) var(--text_shadow_h2) black;
+    text-shadow: 4px 4px 4px black;
 }
 
 .wrapper .you_are_here{
+    /*Skapar en rund gradient*/
     background-image:
         radial-gradient(var(--card_colour_50), var(--card_colour_20));
     color: var(--font_color);
@@ -257,6 +281,7 @@ section h2{
 /* ========== Main ========== */
 
 #home main{
+    /*Grid för #home main*/
     display: grid;
     grid-template-columns: 2fr 1fr;
     grid-template-rows: auto;
@@ -265,6 +290,7 @@ section h2{
 }
 
 #historia main{
+    /*Grid för #historia main*/
     display: grid;
     grid-template-columns: 100%;
     grid-template-rows: calc(var(--row_height) / 1.5) auto;
@@ -274,23 +300,26 @@ section h2{
 }
 
 #genrer main{
+    /*Skapar en rund gradient*/
     background-image:
         radial-gradient(var(--card_colour_50), var(--card_colour_20));
     border-radius: var(--border_radius);
 }
 
 #quiz main{
+    /*Skapar en rund gradient*/
     background-image:
         radial-gradient(var(--card_colour_50), var(--card_colour_20));
     border-radius: var(--border_radius);
 }
 
 main > article{
-    grid-area: article;
+    grid-area: article; /*Main*/
 
     width: 100%;
     height: 100%;
 
+    /*Skapar en rund gradient*/
     background-image:
         radial-gradient(var(--card_colour_50), var(--card_colour_20));
 }
@@ -301,6 +330,7 @@ main > article{
 }
 
 #home section{
+    /*Skapar en rund gradient*/
     background-image:
         radial-gradient(var(--card_colour_50), var(--card_colour_20));
     border-bottom-right-radius: var(--border_radius);
@@ -317,10 +347,11 @@ main > article h2{
 }
 
 main > section{
-    grid-area: section;
+    grid-area: section; /*Main*/
 }
 
 main > section ul{
+    /*Grid för Section*/
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: auto;
@@ -336,29 +367,30 @@ main > section ul{
 }
 
 main > section li{
+    /*Skapar en rund gradiant*/
     background-image:
         radial-gradient(var(--card_colour_20), var(--card_colour_0));
 }
 
 main > section h2{
-    font-size: calc(var(--font_size_h2) / 1.5);
-    text-shadow: 0 0 calc(var(--text_shadow_h2) / 1.5) black;
+    font-size: 30px;
+    text-shadow: 0 0 3px black;
 
     margin: 0;
     border-radius: var(--border_radius);
 }
 
 .section_1{
-    grid-area: section_1;
+    grid-area: section_1; /*Section*/
     border-top-left-radius: var(--border_radius);
 }
 
 .section_2{
-    grid-area: section_2;
+    grid-area: section_2; /*Section*/
 }
 
 .section_3{
-    grid-area: section_3;
+    grid-area: section_3; /*Section*/
     border-top-right-radius: var(--border_radius);
 }
 
@@ -372,7 +404,7 @@ main > section h2{
 .section_2:hover h2, 
 .section_3:hover h2{
     color: var(--font_color);
-    text-shadow: calc(var(--text_shadow_h2) / 1.5) calc(var(--text_shadow_h2) / 1.5) calc(var(--text_shadow_h2) / 1.5) black;
+    text-shadow: 3px 3px 3px black;
 }
 
 /* ========== Form ========== */
@@ -428,15 +460,14 @@ form fieldset{
     text-align: center;
     flex-direction: column;
 
-    margin: calc(var(--border_radius) / 2);
-
     border-radius: var(--border_radius);
 
     background-color: var(--card_colour_20);
-    margin: calc(var(--border_radius) / 2);
+    margin: var(--border_radius);
     padding: 0;
 }
 
+/*Den sista fieldseten i quizen, alltså "rätta"-knappen*/
 #quiz form fieldset:last-of-type p{
     justify-content: center;
 }
@@ -457,6 +488,13 @@ form audio{
 
     text-shadow: none;
 }
+
+/* 
+    :has() ger valideringsfel men jag har en bra anledning till att använda det.
+
+    Det är nämnligen så att jag vill att föräldern till den input som är "checked" ska ändra bakgrundsfärg
+    och det enda andra sättet att göra det på är genom att använda JavaScript och jag orkar inte det.
+*/
 
 form p:has(input[type=radio]:checked){
     background-color: var(--card_colour_50);
@@ -486,6 +524,7 @@ form label{
 
 table{
     border-spacing: 2px;
+    margin: var(--border_radius);
 }
 
 thead, tfoot{
@@ -548,6 +587,7 @@ footer{
     border-bottom-left-radius: var(--border_radius);
     border-bottom-right-radius: var(--border_radius);
 
+    /*Skapar en rund gradiant*/
     background-image:
         radial-gradient(var(--card_colour_50), var(--card_colour_20))
 }
@@ -565,26 +605,13 @@ footer{
         background-color: rgb(19, 16, 19);
     }
 
-    .wrapper > header{
-        height: calc(var(--row_height) * 2);
-    }
-
-    .wrapper:has(aside) main > div{
-        flex-direction: column;
-    }
-
-    header > div{
-        border-top-left-radius: calc(var(--border_radius) * 2);
-        border-top-right-radius: calc(var(--border_radius) * 2);
-    }
-    
-    header h1{
-        font-size: calc(var(--font_size) * 2);
-        text-shadow: 0 0 calc(var(--font_size) / 2.5) black;
+    h1{
+        font-size: 60px;
+        text-shadow: 0 0 6px black;
     }
 
     .wrapper > nav{
-        height: calc(var(--row_height) * 4);
+        height: calc(var(--row_height) * 3);
     }
 
     .wrapper > nav ul{
@@ -594,21 +621,6 @@ footer{
         grid-template-areas:
         "card_home card_1"
         "card_2 card_3";
-    }
-
-    nav li{
-        background-image: 
-            radial-gradient(var(--card_colour_20), var(--card_colour_0));
-    }
-    
-    .wrapper nav i{
-        font-size: calc(var(--font_size) * 2);
-        text-shadow: 0 0 calc(var(--font_size) / 2.5) black;
-    }
-
-    .wrapper nav h2{
-        font-size: calc(var(--font_size) * 1.5);
-        text-shadow: 0 0 calc(var(--font_size) / 3.75) black;
     }
 
     .card_home{
@@ -623,149 +635,25 @@ footer{
         border-bottom-right-radius: calc(var(--border_radius) * 2);
     }
 
-    .card_home:hover i{
-        text-shadow: calc(var(--font_size) / 2.5) calc(var(--font_size) / 2.5) calc(var(--font_size) / 2.5) black;
-    }
-
-    .card_1:hover h2, 
-    .card_2:hover h2, 
-    .card_3:hover h2{
-        text-shadow: calc(var(--font_size) / 3.75) calc(var(--font_size) / 3.75) calc(var(--font_size) / 3.75) black;
-    }
-
-    #home main > div{
-        margin-top: var(--border_radius);
-        margin-bottom: var(--border_radius);
-
-        border-radius: 0;
-        border-top-left-radius: calc(var(--border_radius) * 2);
-        border-top-right-radius: calc(var(--border_radius) * 2);
-    }
-    
-    #home main h2,
-    #historia main h2{
-        font-size: calc(var(--font_size));
-        text-shadow: 0 0 calc(var(--font_size) / 5) black;
-    }
-    
-    main p{
-        font-size: calc(var(--font_size) / 1.5);
-        text-shadow: 0 0 calc(var(--font_size) / 7.25) black;    
-    
-        padding: var(--border_radius);
-    }
-        
-    #historia main figure{
-        align-items: center;
-    
-        padding: var(--border_radius);
-        margin: calc(var(--border_radius) * 2);
-    
-        border-radius: calc(var(--border_radius) * 2);
-    }
-    
-    #historia main figure img{
-        max-width: calc(var(--font_size) * 6);
-        border-radius: calc(var(--border_radius) * 2);
-    }
-    
-    #historia main figure figcaption{
-        font-size: calc(var(--font_size) / 2);
-        text-shadow: 0 0 calc(var(--font_size) / 10) black;
-        max-width: calc(var(--font_size) * 6);
-
-        float: right;
-    }
-
-    #historia .wrapper > main{
+    #home main{
+        /*Grid för #home main*/
         display: grid;
-        grid-template-columns: auto;
+        grid-template-columns: 1fr;
         grid-template-rows: auto auto;
         grid-template-areas: 
-        "nav_2" 
+        "article"
         "section";
     }
 
-    main > nav ul{
-        display: grid;
-        grid-template-columns: 100%;
-        grid-template-rows: calc(var(--row_height)) calc(var(--row_height)) calc(var(--row_height));
-        grid-template-areas:
-        "aside_1"
-        "aside_2"
-        "aside_3";
-    }
-
-    main > nav li{
-        background-image: 
-            radial-gradient(var(--card_colour_20), var(--card_colour_0));
-    }
-
-    main > nav a{
-        font-size: var(--font_size);
-        text-shadow: 0 0 calc(var(--font_size) / 5) black;
-    }
-
-    .aside_1{
-        border-top-left-radius: calc(var(--border_radius) * 2);
-        border-top-right-radius: calc(var(--border_radius) * 2);
-    }
-
-    .aside_1:hover a, 
-    .aside_2:hover a, 
-    .aside_3:hover a{
-        text-shadow: calc(var(--font_size) / 5) calc(var(--font_size) / 5) calc(var(--font_size) / 5) black;
-    }
-
-    #historia section > div{
+    #home article{
         border-radius: 0;
-    }
-
-    #historia main > nav h2{
-        font-size: var(--font_size);
-        text-shadow: inherit;
-    }
-
-    figure{
-        float: none;
-    }
-
-    .wrapper > footer{
-        height: calc(var(--row_height));
-    }
-
-    footer > div{
-        width: 100%;
-
-        border-bottom-left-radius: calc(var(--border_radius) * 2);
-        border-bottom-right-radius: calc(var(--border_radius) * 2);
+        border-top-left-radius: var(--border_radius);
+        border-top-right-radius: var(--border_radius);
     }
     
-    footer h4{
-        text-shadow: 0 0 calc(var(--font_size) / 5) black;
-        font-size: calc(var(--font_size));
-    }
-
-    #home .wrapper main{
-        flex-direction: row;
-    }
-
-    .betygForm{
-        float: none;
-    }
-
-    form h3{
-        font-size: var(--font_size);
-        text-shadow: 0 0 calc(var(--font_size) / 5) black;;
-    }
-
-    form audio{
-        height: var(--font_size);
+    #home section{
+        border-radius: 0;
+        border-bottom-right-radius: var(--border_radius);
+        border-bottom-left-radius: var(--border_radius);
     }
 }
-
-
-
-
-
-

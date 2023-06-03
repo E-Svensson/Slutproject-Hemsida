@@ -15,7 +15,6 @@ function init(){ // Kod gjord av David
 
 window.onload = init;
 
-
 function getData(){
 
     window.scrollTo(0, 0); // Skrollar till toppen av sidan
